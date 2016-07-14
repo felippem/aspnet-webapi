@@ -11,7 +11,7 @@ Atualmente o projeto está dividido da seguinte maneira:
 5. User Interface (ASP.NET Web API)
 
 Além das camadas, o projeto conta com os conceitos de DI, Unit of Work e Entity Code First, através dos frameworks: Ninject, Migrations e Entity Framework.
-Os domains ainda estão bastante anêmicos, porém é um questão de evolução. Por essas e outras, você precisa contribuir com este projetos.
+Os domains ainda estão bastante anêmicos, porém é um questão de evolução. Por essas e outras, você precisa contribuir com este projeto.
 
 ### Tecnologias envolvidas
 
