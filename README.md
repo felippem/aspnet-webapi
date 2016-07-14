@@ -1,4 +1,4 @@
-# ASPN.NET Web API
+# ASP.NET Web API
 
 O objetivo deste repositório é aplicar conceitos básicos de arquitetura de software, baseado na programação orientada à objetos.
 
