@@ -23,4 +23,7 @@ Os domains ainda estão bastante anêmicos, porém é um questão de evolução.
 6. MySql.Data 6.9.8
 7. MySQL Server 5.6.26 (Community Server)
 
-### Ajude este projeto evoluir e fazer com que possa acrescentar conhecimento no dia-a-dia de outras pessoas.
+### Contribuições
+
+Contribua com este projeto e acrescente conhecimento no dia-a-dia de outras pessoas.
+Envie seus pull requests sempre que desejar. Se preferir, me encontre no twitter <a href="//twitter.com/felippem">@felippem</a>.
