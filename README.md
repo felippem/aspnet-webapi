@@ -2,12 +2,11 @@
 
 O objetivo deste repositório é aplicar conceitos básicos de arquitetura de software, baseado na programação orientada à objetos.
 
-Atualmente o projeto está separado em algumas camadas:
+Atualmente o projeto está dividido em algumas camadas:
 
 1. Application
 2. Domain
-    a. Entities
-    b. Interfaces
+    a. EntitiesInterfaces
     c. Services
 3. Infra
     a. IoC
