@@ -16,7 +16,7 @@ Os domains ainda estão bastante anêmicos, porém é um questão de evolução.
 ### Tecnologias envolvidas
 
 1. NET Framework 4.5.1
-2. ASP.NET Web API 5.2.3
+2. ASP.NET C# Web API 5.2.3
 3. Entity Framework 6.1.3
 4. Ninject 3.2.2.0
 5. AutoMapper 4.2.1
