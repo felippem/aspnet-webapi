@@ -1,0 +1,12 @@
+bin
+obj
+obj/Debug
+obj/Release
+packages
+TestResults
+logs
+*.log
+npm-debug.log*
+node_modules
+.npm
+.node_repl_history
