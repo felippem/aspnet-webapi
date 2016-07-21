@@ -67,7 +67,7 @@ namespace WebAPI.Application
             return _establishmentRepository.ListByTag(tag);
         }
 
-        public void Remove(long id)
+        public bool Remove(long id)
         {
             try
             {
@@ -83,7 +83,10 @@ namespace WebAPI.Application
             catch
             {
                 Rollback();
+                return false;
             }
+
+            return true;
         }
 
         #endregion

@@ -5,6 +5,7 @@ obj/Release
 packages
 TestResults
 *.suo
+*.csproj.user
 logs
 *.log
 npm-debug.log*
