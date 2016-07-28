@@ -19,11 +19,15 @@ namespace WebAPI.Infra.Repo.DataContext
 
         public void Begin()
         {
+            if (!_manager.TestDatabase()) return;
+
             _manager.Context.Database.BeginTransaction();
         }
 
         public void Commit()
         {
+            if (!_manager.TestDatabase()) return;
+
             _manager.Context.SaveChanges();
 
             if (_manager.Context.Database.CurrentTransaction == null) return;
@@ -33,7 +37,8 @@ namespace WebAPI.Infra.Repo.DataContext
 
         public void Rollback()
         {
-            if (_manager.Context.Database.CurrentTransaction == null) return;
+            if (!_manager.TestDatabase() || _manager.Context.Database.CurrentTransaction == null) 
+                return;
 
             _manager.Context.Database.CurrentTransaction.Rollback();
         }

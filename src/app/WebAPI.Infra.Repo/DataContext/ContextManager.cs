@@ -8,11 +8,11 @@ namespace WebAPI.Infra.Repo.DataContext
     {
         #region Constants
 
-        protected const string CONTEXT_KEY = "ContextManager.Key";
-
+        private const string CONTEXT_KEY = "ContextManager.Key";
+        
         #endregion
 
-        #region Properties
+        #region Fields
 
         public DbContext Context
         {
@@ -23,11 +23,16 @@ namespace WebAPI.Infra.Repo.DataContext
 
                 if (HttpContext.Current.Items[CONTEXT_KEY] == null)
                     HttpContext.Current.Items[CONTEXT_KEY] = this.GetConnectionInstance();
+
                 return (DbContext)HttpContext.Current.Items[CONTEXT_KEY];
             }
         }
 
         #endregion
+
+        public ContextManager()
+        {
+        }
 
         #region Methods
 
@@ -43,7 +48,7 @@ namespace WebAPI.Infra.Repo.DataContext
             {
                 if (!Context.Database.Exists())
                 {
-                    Console.WriteLine("Não foi possível localizar o banco de dados");
+                    Console.WriteLine("A conexão com o banco de dados falhou.");
                     return false;
                 }
             }
