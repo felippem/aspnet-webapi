@@ -48,7 +48,8 @@ Para executar este projeto é necessário que você tenha um ambiente de desenvo
   
   > mysql> \q
 
-  > sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf -> Modifique a variável "base_address" com o número de IP do servidor
+  > $ sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+    Modifique a variável "base_address" com o número de IP do servidor
     
   > mysql> service mysql restart
 
