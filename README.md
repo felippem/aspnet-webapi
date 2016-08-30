@@ -47,9 +47,9 @@ Para executar este projeto é necessário que você tenha um ambiente de desenvo
   Provavelmente você terá que liberar o acesso ao mysql para acesso remoto
   
   > mysql> \q
-  > sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
-    Modifique a variável "base_address" com o número de IP do servidor
-  
+
+  > sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf -> Modifique a variável "base_address" com o número de IP do servidor
+    
   > mysql> service mysql restart
 
 * Em WebAPI.Infra.Repo/App.config, configure a chave "ConnectionString"
