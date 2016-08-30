@@ -1,0 +1,215 @@
+{
+	"variables": [],
+	"info": {
+		"name": "aspnet_webapi",
+		"_postman_id": "8ed907aa-6b8d-4fd3-83b6-01765a80189f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Establishment",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "http://localhost:50180/v1/establishment",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"url": "http://localhost:50180/v1/establishment/1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "List by tag",
+					"request": {
+						"url": "http://localhost:50180/v1/establishment/?tag=familia",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"url": "http://localhost:50180/v1/establishment/1",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"url": "http://localhost:50180/v1/establishment",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"acceptsReservations\": false,\n    \"alternateName\": \"Ouback Steakhouse\",\n    \"currenciesAccepted\": \"R$\",\n    \"contactName\": \"Marjorie\",\n    \"created\": \"2016-06-13T00:00:00\",\n    \"deleted\": false,\n    \"enabled\": true,\n    \"email\": \"contato@outback.com\",\n    \"legalName\": \"Ouback\",\n    \"logo\": \"http://www.outback.com.br/imgs/logo.jpg\",\n    \"openingHours\": null,\n    \"priceRange\": \"$$$$\",\n    \"telephone\": \"1144360288\",\n    \"tags\": \"bar,ouback,steakhouse,familia,happy hour\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"url": "http://localhost:50180/v1/establishment",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"establishmentKey\": 1,\n    \"alternateName\": \"Outback\",\n    \"currenciesAccepted\": \"R$\",\n    \"contactName\": \"Marjorie\",\n    \"created\": \"2016-06-13T00:00:00\",\n    \"deleted\": false,\n    \"enabled\": true,\n    \"email\": \"contato@teste.com.br\",\n    \"legalName\": \"Outback Steakhouse\",\n    \"logo\": null,\n    \"openingHours\": null,\n    \"priceRange\": \"$$$\",\n    \"telephone\": \"1144556699\",\n    \"tags\": \"bar,happy hour\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subsidiary",
+			"description": "",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"url": "http://localhost:50180/v1/subsidiary",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"url": "http://localhost:50180/v1/subsidiary/1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"url": "http://localhost:50180/v1/subsidiary/1",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"url": "http://localhost:50180/v1/subsidiary",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"acceptsReservations\": false,\n    \"currenciesAccepted\": \"R$\",\n    \"contactName\": \"Jordan\",\n    \"created\": \"2016-08-13T00:00:00\",\n    \"deleted\": false,\n    \"enabled\": true,\n    \"email\": \"jordan@outback.com\",\n    \"openingHours\": null,\n    \"priceRange\": \"$$$$\",\n    \"telephone\": \"1184360289\",\n    \"establishment\": {\n        \"establishmentKey\": 1\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"url": "http://localhost:50180/v1/subsidiary",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subsidiaryKey\": 1,\n    \"acceptsReservations\": false,\n    \"currenciesAccepted\": \"R$\",\n    \"contactName\": \"Julye\",\n    \"created\": \"2016-08-13T00:00:00\",\n    \"deleted\": false,\n    \"enabled\": true,\n    \"email\": \"jordan@outback.com\",\n    \"openingHours\": null,\n    \"priceRange\": \"$$$$\",\n    \"telephone\": \"1184360289\",\n    \"establishment\": {\n        \"establishmentKey\": 1\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "List by establishment",
+					"request": {
+						"url": "http://localhost:50180/v1/subsidiary/establishment/1",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
