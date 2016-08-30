@@ -15,13 +15,13 @@ Os domains ainda estão bastante anêmicos, porém é um questão de evolução.
 
 ### Tecnologias envolvidas
 
-1. .NET Framework 4.5.1
-2. ASP.NET C# Web API 5.2.3
-3. Entity Framework 6.1.3
-4. Ninject 3.2.2.0
-5. AutoMapper 4.2.1
-6. MySql.Data 6.9.8
-7. MySQL Server 5.6.26 (Community Server)
+* .NET Framework 4.5.1
+* ASP.NET C# Web API 5.2.3
+* Entity Framework 6.1.3
+* Ninject 3.2.2.0
+* AutoMapper 4.2.1
+* MySql.Data 6.9.8
+* MySQL Server 5.6.26 (Community Server)
 
 ### Instalação
 
