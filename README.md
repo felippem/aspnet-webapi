@@ -22,6 +22,8 @@ Os domains ainda estão bastante anêmicos, porém é um questão de evolução.
 * AutoMapper 4.2.1
 * MySql.Data 6.9.8
 * MySQL Server 5.6.26 (Community Server)
+* Microsoft Windows 10
+* Ubuntu 16.04
 
 ### Instalação
 
@@ -32,17 +34,15 @@ Para executar este projeto é necessário que você tenha um ambiente de desenvo
 * Instale o MySQL em localhost ou em algum servidor dedicado (VirtualBox ou na nuvem)
   
   ####Ubuntu: 
-  > sudo apt-get install mysql-server
+  > $ sudo apt-get install mysql-server
 
-* Crie um usuário para conexão remota. Lembrando que neste contexto não estamos preocupados com restrições de acesso
-
-  > mysql -u root -p
+  > $ mysql -u root -p
   
-  > CREATE USER 'USER_NAME'@'%' IDENTIFIED BY 'USER_PASSWORD';
+  > mysql> CREATE USER 'USER_NAME'@'%' IDENTIFIED BY 'USER_PASSWORD';
   
-  > GRANT ALL PRIVILEGES ON * . * TO 'USER_NAME'@'%';
+  > mysql> GRANT ALL PRIVILEGES ON * . * TO 'USER_NAME'@'%';
   
-  > FLUSH PRIVILEGES;
+  > mysql> FLUSH PRIVILEGES;
 
 * Em WebAPI.Infra.Repo/App.config, configure a chave "ConnectionString"
 * Através do "Nuget Package Manager Console", execute o comando:
