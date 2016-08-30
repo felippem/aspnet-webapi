@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationBase.cs" />
+    <Compile Include="SubsidiaryApplication.cs" />
     <Compile Include="EstablishmentApplication.cs" />
     <Compile Include="PostalAddressApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

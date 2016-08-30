@@ -15,8 +15,14 @@ namespace Web.UI
 
             config.Routes.MapHttpRoute(
                 name: "defaultapi",
-                routeTemplate: "{version}/{controller}/{key}",
-                defaults: new { key = RouteParameter.Optional }
+                routeTemplate: "{version}/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "0",
+                routeTemplate: "{version}/subsidiary/establishment/{establishmentId}",
+                defaults: new { controller = "Subsidiary", action = "ListBy" }
             );
         }
 

@@ -113,11 +113,13 @@
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Controllers\SubsidiaryController.cs" />
     <Compile Include="Controllers\EstablishmentController.cs" />
     <Compile Include="Filters\ExeceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\SubsidiaryViewModel.cs" />
     <Compile Include="Models\EstablishmentViewModel.cs" />
     <Compile Include="Models\PostalAddressViewModel.cs" />
     <Compile Include="Models\ResultViewModel.cs" />

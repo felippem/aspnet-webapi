@@ -26,38 +26,30 @@ namespace Web.UI.Controllers
         #region Actions
 
         [HttpGet]
-        public IHttpActionResult Get(string key)
-        { 
-            long id = 0;
+        public IHttpActionResult Get(long id)
+        {
+            if (id <= 0)
+                return Content(HttpStatusCode.BadRequest, FormatResult(2, id, "ID não é válido"));
 
-            // TO DO: Key será criptograda
-
-            if (!long.TryParse(key, out id))
-                return Content(HttpStatusCode.BadRequest, FormatResult(2, key, "Key não é válido"));
-
-            var establishment = Mapper.Map<Establishment, EstablishmentViewModel>(_establishmentApplication.Get(id));
-
-            return Ok(FormatResult(1, establishment));
+            return Ok(FormatResult(1, Mapper.Map<Establishment, EstablishmentViewModel>(_establishmentApplication.Get(id))));
         }
 
         [HttpGet]
         public IHttpActionResult List()
         {
-            var establishments = Mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentViewModel>>(_establishmentApplication.List());
-
-            return Ok(FormatResult(1, establishments));
+            return Ok(FormatResult(1,  Mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentViewModel>>
+                (_establishmentApplication.List())));
         }
 
         [HttpGet]
-        public IHttpActionResult ListByTag([FromUri]string tag)
+        public IHttpActionResult ListBy([FromUri]string tag)
         {
-            var establishments = Mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentViewModel>>(_establishmentApplication.ListByTag(tag));
-
-            return Ok(FormatResult(1, establishments));
+            return Ok(FormatResult(1, Mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentViewModel>>
+                (_establishmentApplication.ListByTag(tag))));
         }
 
         [HttpPost]
-        public IHttpActionResult Create(EstablishmentViewModel entity)
+        public IHttpActionResult Create([FromBody]EstablishmentViewModel entity)
         {
             var establishment = Mapper.Map<Establishment, EstablishmentViewModel>(_establishmentApplication
                 .Save(Mapper.Map<EstablishmentViewModel, Establishment>(entity)));
@@ -66,7 +58,7 @@ namespace Web.UI.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult Update(EstablishmentViewModel entity)
+        public IHttpActionResult Update([FromBody]EstablishmentViewModel entity)
         {
             var establishment = Mapper.Map<Establishment, EstablishmentViewModel>(_establishmentApplication
                 .Save(Mapper.Map<EstablishmentViewModel, Establishment>(entity)));
@@ -75,14 +67,10 @@ namespace Web.UI.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult Remove(string key)
+        public IHttpActionResult Remove(long id)
         {
-            long id = 0;
-
-            // TO DO: Key será criptograda
-
-            if (!long.TryParse(key, out id))
-                return Content(HttpStatusCode.BadRequest, FormatResult(2, key, "Key não é válido"));
+            if (id <= 0)
+                return Content(HttpStatusCode.BadRequest, FormatResult(2, id, "ID não é válido"));
 
             _establishmentApplication.Remove(id);
 

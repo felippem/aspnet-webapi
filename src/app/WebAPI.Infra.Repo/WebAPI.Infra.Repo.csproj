@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext\ContextManager.cs" />
+    <Compile Include="DataContext\EntityConfig\SubsidiaryConfig.cs" />
     <Compile Include="DataContext\EntityConfig\PostalAddressConfig.cs" />
     <Compile Include="DataContext\EntityConfig\EstablishmentConfig.cs" />
     <Compile Include="DataContext\Db.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Repositories\PostalAddressRepository.cs" />
     <Compile Include="Repositories\EstablishmentRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\SubsidiaryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebAPI.Domain\WebAPI.Domain.csproj">
@@ -73,7 +75,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

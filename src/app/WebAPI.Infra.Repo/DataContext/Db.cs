@@ -67,6 +67,7 @@ namespace WebAPI.Infra.Repo.DataContext
         {
             modelBuilder.Configurations.Add(new EstablishmentConfig());
             modelBuilder.Configurations.Add(new PostalAddressConfig());
+            modelBuilder.Configurations.Add(new SubsidiaryConfig());
 
             modelBuilder
                 .Entity<Establishment>()
@@ -76,6 +77,24 @@ namespace WebAPI.Infra.Repo.DataContext
                 {
                     m.MapKey("PostalAddressId");
                 });
+
+            modelBuilder
+                .Entity<Subsidiary>()
+                .HasOptional(p => p.PostalAddress)
+                .WithOptionalDependent(p => p.Subsidiary)
+                .Map(m =>
+                {
+                    m.MapKey("PostalAddressId");
+                });
+
+            modelBuilder
+               .Entity<Subsidiary>()
+               .HasOptional(p => p.Establishment)
+               .WithOptionalDependent(p => p.Subsidiary)
+               .Map(m =>
+               {
+                   m.MapKey("EstablishmentId");
+               });
         }
 
         #endregion

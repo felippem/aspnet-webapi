@@ -36,9 +36,11 @@
   <ItemGroup>
     <Compile Include="Entities\Establishment.cs" />
     <Compile Include="Entities\PostalAddress.cs" />
+    <Compile Include="Entities\Subsidiary.cs" />
     <Compile Include="Interfaces\IPostalAddressRepository.cs" />
     <Compile Include="Interfaces\IEstablishmentRepository.cs" />
     <Compile Include="Interfaces\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\ISubsidiaryRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

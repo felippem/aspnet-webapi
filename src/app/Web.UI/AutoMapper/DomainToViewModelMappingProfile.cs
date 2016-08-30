@@ -24,6 +24,7 @@ namespace Web.UI.AutoMapper
         {
             Mapper.CreateMap<Establishment, EstablishmentViewModel>();
             Mapper.CreateMap<PostalAddress, PostalAddressViewModel>();
+            Mapper.CreateMap<Subsidiary, SubsidiaryViewModel>();
         }
 
         #endregion

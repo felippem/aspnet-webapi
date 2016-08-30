@@ -47,6 +47,7 @@ namespace WebAPI.Application
             catch
             {
                 Rollback();
+                establishment = null;
             }
 
             return establishment;

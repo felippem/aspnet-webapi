@@ -15,6 +15,7 @@ namespace WebAPI.Infra.IoC
             Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             Bind(typeof(IEstablishmentRepository)).To(typeof(EstablishmentRepository));
             Bind(typeof(IPostalAddressRepository)).To(typeof(PostalAddressRepository));
+            Bind(typeof(ISubsidiaryRepository)).To(typeof(SubsidiaryRepository));
             Bind<ContextManager>().ToSelf();
         }
 
