@@ -31,7 +31,15 @@ Para executar este projeto é necessário que você tenha um ambiente de desenvo
 * Certifique-se de que o .NET Framework 4.5.1 esteja instalado
 * Instale o MySQL em localhost ou em algum servidor dedicado (VirtualBox ou na nuvem)
   
-  > Ubuntu: sudo apt-get install mysql-server
+  #Ubuntu: 
+  > sudo apt-get install mysql-server
+
+* Crie um usuário para conexão remota. Lembrando que neste contexto não estamos preocupados com restrições de acesso
+
+  > mysql -u root -p
+  > CREATE USER 'USER_NAME'@'%' IDENTIFIED BY 'USER_PASSWORD';
+  > GRANT ALL PRIVILEGES ON * . * TO 'USER_NAME'@'%';
+  > FLUSH PRIVILEGES;
 
 * Em WebAPI.Infra.Repo/App.config, configure a chave "ConnectionString"
 * Através do "Nuget Package Manager Console", execute o comando:
