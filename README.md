@@ -33,9 +33,7 @@ Para executar este projeto é necessário que você tenha um ambiente de desenvo
 * Em WebAPI.Infra.Repo/App.config, configure a chave "ConnectionString"
 * Através do "Nuget Package Manager Console", execute o comando:
 
-...
 > Update-Database -StartUpProjectName WebAPI.Infra.Repo
-...
 
 * Em Web.UI/Web.config, configure a chave "ConnectionString"
 * Execute o projeto para que a API seja fornecida através do IIS
