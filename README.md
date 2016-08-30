@@ -27,6 +27,10 @@ Os domains ainda estão bastante anêmicos, porém é um questão de evolução.
 
 ### Instalação
 
+Faça o clone da aplicação
+
+> git clone http://
+
 Para executar este projeto é necessário que você tenha um ambiente de desenvolvimento devidamente configurado.
 
 * Instale o Visual Studio ou Visual Studio 2013 ou superior para compilar o projeto
