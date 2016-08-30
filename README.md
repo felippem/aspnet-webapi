@@ -48,11 +48,10 @@ Para executar este projeto é necessário que você tenha um ambiente de desenvo
   
   > mysql> \q
 
+  Modifique a variável "base_address" com o número IP do servidor
   > $ sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
   
-    Modifique a variável "base_address" com o número IP do servidor
-  
-  > mysql> service mysql restart
+  > $ service mysql restart
 
 * Em WebAPI.Infra.Repo/App.config, configure a chave "ConnectionString"
 * Através do "Nuget Package Manager Console", execute o comando
