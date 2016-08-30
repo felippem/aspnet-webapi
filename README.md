@@ -27,19 +27,19 @@ Os domains ainda estão bastante anêmicos, porém é um questão de evolução.
 
 Para executar este projeto é necessário que você tenha um ambiente de desenvolvimento devidamente configurado.
 
-1. Instale o Visual Studio ou Visual Studio 2013 ou superior para compilar o projeto
-2. Certifique-se de que o .NET Framework 4.5.1 esteja instalado
-3. Instale o MySQL em localhost ou em algum servidor dedicado (VirtualBox ou na nuvem)
-4. Em WebAPI.Infra.Repo/App.config, configure a chave "ConnectionString"
-5. Através do "Nuget Package Manager Console", execute o comando:
+* Instale o Visual Studio ou Visual Studio 2013 ou superior para compilar o projeto
+* Certifique-se de que o .NET Framework 4.5.1 esteja instalado
+* Instale o MySQL em localhost ou em algum servidor dedicado (VirtualBox ou na nuvem)
+* Em WebAPI.Infra.Repo/App.config, configure a chave "ConnectionString"
+* Através do "Nuget Package Manager Console", execute o comando:
 
 ...
-Update-Database -StartUpProjectName WebAPI.Infra.Repo
+> Update-Database -StartUpProjectName WebAPI.Infra.Repo
 ...
 
-6. Em Web.UI/Web.config, configure a chave "ConnectionString"
-7. Execute o projeto para que a API seja fornecida através do IIS
-8. Teste as operações da API através de um client de sua preferência.
+* Em Web.UI/Web.config, configure a chave "ConnectionString"
+* Execute o projeto para que a API seja fornecida através do IIS
+* Teste as operações da API através de um client de sua preferência.
 
 ###Recomendações
 
