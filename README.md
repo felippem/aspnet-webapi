@@ -27,15 +27,14 @@ Os domains ainda estão bastante anêmicos, porém é um questão de evolução.
 
 ### Instalação
 
-Faça o clone da aplicação
-
-> git clone https://github.com/felippem/aspnet-webapi.git
-
 Para executar este projeto é necessário que você tenha um ambiente de desenvolvimento devidamente configurado.
 
 * Instale o Visual Studio ou Visual Studio 2013 ou superior para compilar o projeto
 * Certifique-se de que o .NET Framework 4.5.1 esteja instalado
 * Instale o MySQL em localhost ou em algum servidor dedicado (VirtualBox ou na nuvem)
+* Faça o clone da aplicação
+
+  > git clone https://github.com/felippem/aspnet-webapi.git
   
   ####Ubuntu: 
   > $ sudo apt-get install mysql-server
