@@ -29,7 +29,7 @@ Os domains ainda estão bastante anêmicos, porém é um questão de evolução.
 
 Faça o clone da aplicação
 
-> git clone http://
+> git clone https://github.com/felippem/aspnet-webapi.git
 
 Para executar este projeto é necessário que você tenha um ambiente de desenvolvimento devidamente configurado.
 
