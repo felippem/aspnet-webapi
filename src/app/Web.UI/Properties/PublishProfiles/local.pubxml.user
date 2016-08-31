@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\inetpub\wwwroot\stress</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AutoMapper.dll">
+      <publishTime>06/10/2016 12:45:16</publishTime>
+    </File>
+    <File Include="bin/CommonServiceLocator.NinjectAdapter.Unofficial.dll">
+      <publishTime>07/07/2016 14:03:13</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>06/02/2016 13:56:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
+      <publishTime>06/02/2016 13:28:09</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>06/02/2016 13:57:24</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.EF6.dll">
+      <publishTime>06/02/2016 13:58:05</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>06/02/2016 12:36:10</publishTime>
+    </File>
+    <File Include="bin/Ninject.dll">
+      <publishTime>06/02/2016 13:30:10</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>06/02/2016 13:32:19</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>06/10/2016 12:18:23</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>06/02/2016 13:32:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>06/10/2016 12:18:42</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>06/10/2016 12:18:25</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>06/10/2016 12:18:22</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>06/10/2016 12:18:23</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>06/10/2016 12:18:23</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>06/10/2016 12:18:23</publishTime>
+    </File>
+    <File Include="bin/Web.UI.dll">
+      <publishTime>08/31/2016 15:33:23</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Application.dll">
+      <publishTime>08/31/2016 15:33:23</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Domain.dll">
+      <publishTime>08/31/2016 11:32:34</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Infra.IoC.dll">
+      <publishTime>08/31/2016 15:09:32</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Infra.Repo.dll">
+      <publishTime>08/31/2016 15:09:32</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>06/10/2016 12:13:24</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>06/23/2016 14:45:52</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>06/10/2016 12:13:21</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/31/2016 11:32:38</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

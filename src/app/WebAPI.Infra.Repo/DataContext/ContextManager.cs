@@ -1,30 +1,17 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Web;
 
 namespace WebAPI.Infra.Repo.DataContext
 {
     public class ContextManager
     {
-        #region Constants
-
-        private const string CONTEXT_KEY = "ContextManager.Key";
-        
-        #endregion
-
         #region Fields
 
         public DbContext Context
         {
             get
             {
-                if (HttpContext.Current == null)
-                    return this.GetConnectionInstance();
-
-                if (HttpContext.Current.Items[CONTEXT_KEY] == null)
-                    HttpContext.Current.Items[CONTEXT_KEY] = this.GetConnectionInstance();
-
-                return (DbContext)HttpContext.Current.Items[CONTEXT_KEY];
+                return this.GetConnectionInstance();
             }
         }
 
@@ -38,8 +25,7 @@ namespace WebAPI.Infra.Repo.DataContext
 
         protected Db GetConnectionInstance()
         {
-            // TO DO: Ler connectionstring criptograda, descriptografar e passar como parâmetro.
-            return new Db();
+            return Singleton<Db>.Instancia;
         }
 
         public bool TestDatabase()

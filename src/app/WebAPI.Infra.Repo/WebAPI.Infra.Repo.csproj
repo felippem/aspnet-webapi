@@ -59,6 +59,7 @@
     <Compile Include="DataContext\EntityConfig\PostalAddressConfig.cs" />
     <Compile Include="DataContext\EntityConfig\EstablishmentConfig.cs" />
     <Compile Include="DataContext\Db.cs" />
+    <Compile Include="DataContext\Singleton.cs" />
     <Compile Include="DataContext\UnityOfWork.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
