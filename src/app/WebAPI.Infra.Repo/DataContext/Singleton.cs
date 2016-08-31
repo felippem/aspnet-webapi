@@ -10,7 +10,7 @@ namespace WebAPI.Infra.Repo.DataContext
 
         private static readonly Lazy<T> LazyLoad = new Lazy<T>(() => new T());
 
-        public static T Instancia
+        public static T Instance
         {
             get
             {

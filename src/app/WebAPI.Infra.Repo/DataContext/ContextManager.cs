@@ -25,7 +25,7 @@ namespace WebAPI.Infra.Repo.DataContext
 
         protected Db GetConnectionInstance()
         {
-            return Singleton<Db>.Instancia;
+            return Singleton<Db>.Instance;
         }
 
         public bool TestDatabase()
