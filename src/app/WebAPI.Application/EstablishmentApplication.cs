@@ -74,7 +74,7 @@ namespace WebAPI.Application
             {
                 Begin();
 
-                Establishment establishment = Get(id);
+                var establishment = Get(id);
                 establishment.Deleted = true;
 
                 _establishmentRepository.Update(establishment);

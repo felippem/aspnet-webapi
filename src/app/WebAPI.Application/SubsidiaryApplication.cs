@@ -80,7 +80,7 @@ namespace WebAPI.Application
             {
                 Begin();
 
-                Subsidiary subsidiary = Get(id);
+                var subsidiary = Get(id);
                 subsidiary.Deleted = true;
 
                 _subsidiaryRepository.Update(subsidiary);
