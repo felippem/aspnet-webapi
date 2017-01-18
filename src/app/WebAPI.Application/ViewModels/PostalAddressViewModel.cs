@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Web.UI.Models
+namespace WebAPI.Application.ViewModels
 {
     public class PostalAddressViewModel
     {

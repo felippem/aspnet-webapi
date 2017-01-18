@@ -1,6 +1,5 @@
-﻿using WebAPI.Domain.Interfaces;
-
-namespace WebAPI.Infra.Repo.DataContext
+﻿
+namespace WebAPI.Infra.Repo.DataContext.UnitOfWork
 {
     public class UnityOfWork : IUnitOfWork
     {

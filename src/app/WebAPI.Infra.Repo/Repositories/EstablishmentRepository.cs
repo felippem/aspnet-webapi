@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces;
+using WebAPI.Domain.Interfaces.Repository;
 using WebAPI.Infra.Repo.DataContext;
 
 namespace WebAPI.Infra.Repo.Repositories
 {
-    public class EstablishmentRepository : RepositoryBase<Establishment>, IEstablishmentRepository
+    public class EstablishmentRepository : Repository<Establishment>, IEstablishmentRepository
     {
         public EstablishmentRepository(ContextManager manager)
             : base(manager)

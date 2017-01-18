@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using WebAPI.Domain.Interfaces;
+using WebAPI.Domain.Interfaces.Repository;
 using WebAPI.Infra.Repo.DataContext;
 
 namespace WebAPI.Infra.Repo.Repositories
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         #region Fields
 
@@ -14,7 +14,7 @@ namespace WebAPI.Infra.Repo.Repositories
 
         #endregion
 
-        public RepositoryBase(ContextManager manager)
+        public Repository(ContextManager manager)
         {
             _manager = manager;
         }

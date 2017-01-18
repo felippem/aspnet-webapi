@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Web.UI.Models;
+using WebAPI.Application.ViewModels;
 using WebAPI.Domain.Entities;
 
-namespace Web.UI.AutoMapper
+namespace WebAPI.Application.AutoMapper
 {
     public class DomainToViewModelMappingProfile : Profile
     {

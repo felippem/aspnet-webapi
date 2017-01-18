@@ -1,17 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces;
+using WebAPI.Domain.Interfaces.Repository;
 using WebAPI.Infra.Repo.DataContext;
 
 namespace WebAPI.Infra.Repo.Repositories
 {
-    public class SubsidiaryRepository : RepositoryBase<Subsidiary>, ISubsidiaryRepository
+    public class SubsidiaryRepository : Repository<Subsidiary>, ISubsidiaryRepository
     {
         public SubsidiaryRepository(ContextManager manager)
             : base(manager)
         {
         }
+
+        #region Behaviors
 
         public override IEnumerable<Subsidiary> List()
         {
@@ -31,5 +33,7 @@ namespace WebAPI.Infra.Repo.Repositories
 
             return subsidiaries.Where(w => w.Available());
         }
+
+        #endregion
     }
 }

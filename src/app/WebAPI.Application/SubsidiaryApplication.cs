@@ -1,77 +1,79 @@
-﻿using System;
+﻿using AutoMapper;
 using System.Collections.Generic;
+using WebAPI.Application.Interfaces;
+using WebAPI.Application.ViewModels;
 using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces;
+using WebAPI.Domain.Interfaces.Services;
+using WebAPI.Infra.Repo.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
 {
-    public class SubsidiaryApplication : ApplicationBase
+    public class SubsidiaryApplication : ApplicationBase, ISubsidiaryApplication
     {
         #region Fields
 
-        private ISubsidiaryRepository _subsidiaryRepository;
-        private PostalAddressApplication _postalAddressApplication;
-        private EstablishmentApplication _establishmentApplication;
+        private ISubsidiaryService _subsidiaryService;
+        private IPostalAddressService _postalAddressService;
+        private IEstablishmentService _establishmentService;
 
         #endregion
 
-        public SubsidiaryApplication(ISubsidiaryRepository subsidiaryRepository,
-            PostalAddressApplication postalAddressApplication,
-            EstablishmentApplication establishmentApplication,
+        public SubsidiaryApplication(ISubsidiaryService subsidiaryService,
+            IPostalAddressService postalAddressService,
+            IEstablishmentService establishmentService,
             IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-            _subsidiaryRepository = subsidiaryRepository;
-            _postalAddressApplication = postalAddressApplication;
-            _establishmentApplication = establishmentApplication;
+            _subsidiaryService = subsidiaryService;
+            _postalAddressService = postalAddressService;
+            _establishmentService = establishmentService;
         }
 
         #region Behaviors
 
-        public Subsidiary Save(Subsidiary subsidiary)
+        public SubsidiaryViewModel Save(SubsidiaryViewModel subsidiaryViewModel)
         {
+            Subsidiary subsidiary = null;
+
             try
             {
                 Begin();
 
+                subsidiary = Mapper.Map<SubsidiaryViewModel, Subsidiary>(subsidiaryViewModel);
+
                 if (subsidiary.PostalAddress != null)
-                    subsidiary.PostalAddress = _postalAddressApplication.Save(subsidiary.PostalAddress);
+                    subsidiary.PostalAddress = _postalAddressService.Save(subsidiary.PostalAddress);
 
                 if (subsidiary.Establishment != null && subsidiary.Establishment.EstablishmentId > 0)
-                    subsidiary.Establishment = _establishmentApplication.Get(subsidiary.Establishment.EstablishmentId);
-
-                if (subsidiary.SubsidiaryId == 0)
-                {
-                    subsidiary.Created = DateTime.Now;
-                    subsidiary = _subsidiaryRepository.Create(subsidiary);
-                }
-                else
-                    subsidiary = _subsidiaryRepository.Update(subsidiary);
+                    subsidiary.Establishment = _establishmentService.Get(subsidiary.Establishment.EstablishmentId);
+                
+                subsidiary = _subsidiaryService.Save(subsidiary);
                 
                 Commit();
             }
             catch
             {
                 Rollback();
-                subsidiary = null;
             }
 
-            return subsidiary;
+            return Mapper.Map<Subsidiary, SubsidiaryViewModel>(subsidiary);
         }
 
-        public Subsidiary Get(long id)
+        public SubsidiaryViewModel Get(long id)
         {
-            return _subsidiaryRepository.Get(id);
+            return Mapper.Map<Subsidiary, SubsidiaryViewModel>(_subsidiaryService.Get(id));
         }
 
-        public IEnumerable<Subsidiary> List()
+        public IEnumerable<SubsidiaryViewModel> List()
         {
-            return _subsidiaryRepository.List();
+            return Mapper.Map<IEnumerable<Subsidiary>, IEnumerable<SubsidiaryViewModel>>
+                (_subsidiaryService.List());
         }
 
-        public IEnumerable<Subsidiary> List(long establishmentId)
+        public IEnumerable<SubsidiaryViewModel> List(long establishmentId)
         {
-            return _subsidiaryRepository.List(establishmentId);
+            return Mapper.Map<IEnumerable<Subsidiary>, IEnumerable<SubsidiaryViewModel>>
+                (_subsidiaryService.List(establishmentId));
         }
 
         public bool Remove(long id)
@@ -80,10 +82,7 @@ namespace WebAPI.Application
             {
                 Begin();
 
-                var subsidiary = Get(id);
-                subsidiary.Deleted = true;
-
-                _subsidiaryRepository.Update(subsidiary);
+                _subsidiaryService.Remove(id);
 
                 Commit();
             }

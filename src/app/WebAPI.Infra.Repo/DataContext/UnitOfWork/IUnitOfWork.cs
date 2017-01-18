@@ -1,5 +1,5 @@
 ﻿
-namespace WebAPI.Domain.Interfaces
+namespace WebAPI.Infra.Repo.DataContext.UnitOfWork
 {
     public interface IUnitOfWork
     {

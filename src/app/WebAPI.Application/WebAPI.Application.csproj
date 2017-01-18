@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,17 +44,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationBase.cs" />
+    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Interfaces\IEstablishmentApplication.cs" />
+    <Compile Include="Interfaces\ISubsidiaryApplication.cs" />
     <Compile Include="SubsidiaryApplication.cs" />
     <Compile Include="EstablishmentApplication.cs" />
-    <Compile Include="PostalAddressApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\EstablishmentViewModel.cs" />
+    <Compile Include="ViewModels\PostalAddressViewModel.cs" />
+    <Compile Include="ViewModels\SubsidiaryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebAPI.Domain\WebAPI.Domain.csproj">
       <Project>{b921738e-b63c-4653-afb1-cb50e284a639}</Project>
       <Name>WebAPI.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebAPI.Infra.Repo\WebAPI.Infra.Repo.csproj">
+      <Project>{dea771fc-7ff2-45e1-9756-de076bccf65f}</Project>
+      <Name>WebAPI.Infra.Repo</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

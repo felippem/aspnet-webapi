@@ -1,23 +1,24 @@
 ﻿using System;
 using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces;
+using WebAPI.Domain.Interfaces.Repository;
+using WebAPI.Domain.Interfaces.Services;
 
-namespace WebAPI.Application
+namespace WebAPI.Domain.Services
 {
-    public class PostalAddressApplication
+    public class PostalAddressService : IPostalAddressService
     {
-        #region Fiedls
+        #region Fields
 
         private IPostalAddressRepository _postalAddressRepository;
 
         #endregion
 
-        public PostalAddressApplication(IPostalAddressRepository postalAddressRepository)
+        #region Behaviors
+
+        public PostalAddressService(IPostalAddressRepository postalAddressRepository)
         {
             _postalAddressRepository = postalAddressRepository;
         }
-
-        #region Behaviors
 
         public PostalAddress Save(PostalAddress postalAddress)
         {

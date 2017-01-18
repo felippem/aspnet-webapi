@@ -1,4 +1,4 @@
-﻿using WebAPI.Domain.Interfaces;
+﻿using WebAPI.Infra.Repo.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
 {
@@ -6,7 +6,7 @@ namespace WebAPI.Application
     {
         #region Fields
 
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         #endregion
 

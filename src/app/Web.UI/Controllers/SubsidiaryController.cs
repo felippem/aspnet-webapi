@@ -1,11 +1,9 @@
-﻿using AutoMapper;
-using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 using System.Web.Http;
 using Web.UI.Filters;
 using Web.UI.Models;
-using WebAPI.Application;
-using WebAPI.Domain.Entities;
+using WebAPI.Application.Interfaces;
+using WebAPI.Application.ViewModels;
 
 namespace Web.UI.Controllers
 {
@@ -14,11 +12,11 @@ namespace Web.UI.Controllers
     {
         #region Fields
 
-        private SubsidiaryApplication _subsidiaryApplication;
+        private ISubsidiaryApplication _subsidiaryApplication;
 
         #endregion
 
-        public SubsidiaryController(SubsidiaryApplication subsidiaryApplication)
+        public SubsidiaryController(ISubsidiaryApplication subsidiaryApplication)
         {
             _subsidiaryApplication = subsidiaryApplication;
         }
@@ -31,14 +29,13 @@ namespace Web.UI.Controllers
             if (id <= 0)
                 return Content(HttpStatusCode.BadRequest, FormatResult(2, id, "ID não é válido"));
 
-            return Ok(FormatResult(1, Mapper.Map<Subsidiary, SubsidiaryViewModel>(_subsidiaryApplication.Get(id))));
+            return Ok(FormatResult(1, _subsidiaryApplication.Get(id)));
         }
 
         [HttpGet]
         public IHttpActionResult List()
         {
-            return Ok(FormatResult(1, Mapper.Map<IEnumerable<Subsidiary>, IEnumerable<SubsidiaryViewModel>>
-                (_subsidiaryApplication.List())));
+            return Ok(FormatResult(1, _subsidiaryApplication.List()));
         }
 
         [HttpGet]
@@ -47,8 +44,7 @@ namespace Web.UI.Controllers
             if (establishmentId <= 0)
                 return Content(HttpStatusCode.BadRequest, FormatResult(2, establishmentId, "ID não é válido"));
 
-            var subsidiaries = Mapper.Map<IEnumerable<Subsidiary>, IEnumerable<SubsidiaryViewModel>>
-                (_subsidiaryApplication.List(establishmentId));
+            var subsidiaries = _subsidiaryApplication.List(establishmentId);
 
             return Ok(FormatResult(1, subsidiaries));
         }
@@ -56,8 +52,7 @@ namespace Web.UI.Controllers
         [HttpPost]
         public IHttpActionResult Create([FromBody]SubsidiaryViewModel entity)
         {
-            var subsidiary = Mapper.Map<Subsidiary, SubsidiaryViewModel>(_subsidiaryApplication
-                .Save(Mapper.Map<SubsidiaryViewModel, Subsidiary>(entity)));
+            var subsidiary = _subsidiaryApplication.Save(entity);
 
             return Ok(FormatResult(1, subsidiary));
         }
@@ -65,8 +60,7 @@ namespace Web.UI.Controllers
         [HttpPut]
         public IHttpActionResult Update([FromBody]SubsidiaryViewModel entity)
         {
-            var subsidiary = Mapper.Map<Subsidiary, SubsidiaryViewModel>(_subsidiaryApplication
-                .Save(Mapper.Map<SubsidiaryViewModel, Subsidiary>(entity)));
+            var subsidiary = _subsidiaryApplication.Save(entity);
 
             return Ok(FormatResult(1, subsidiary));
         }

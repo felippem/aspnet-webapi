@@ -60,12 +60,13 @@
     <Compile Include="DataContext\EntityConfig\EstablishmentConfig.cs" />
     <Compile Include="DataContext\Db.cs" />
     <Compile Include="DataContext\Singleton.cs" />
-    <Compile Include="DataContext\UnityOfWork.cs" />
+    <Compile Include="DataContext\UnitOfWork\UnityOfWork.cs" />
+    <Compile Include="DataContext\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PostalAddressRepository.cs" />
     <Compile Include="Repositories\EstablishmentRepository.cs" />
-    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\SubsidiaryRepository.cs" />
   </ItemGroup>
   <ItemGroup>

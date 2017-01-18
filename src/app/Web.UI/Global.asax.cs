@@ -2,8 +2,7 @@
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
-using Web.UI.AutoMapper;
-using WebAPI.Infra.IoC;
+using WebAPI.Application.AutoMapper;
 
 namespace Web.UI
 {
@@ -16,9 +15,6 @@ namespace Web.UI
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AutoMapperConfig.RegisterMappings();
-
-            IoC.Init();
-            GlobalConfiguration.Configuration.DependencyResolver = new IoCDependencyResolver();
         }
 
         #endregion

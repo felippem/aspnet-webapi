@@ -1,71 +1,73 @@
-﻿using System;
+﻿using AutoMapper;
 using System.Collections.Generic;
+using WebAPI.Application.Interfaces;
+using WebAPI.Application.ViewModels;
 using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces;
+using WebAPI.Domain.Interfaces.Services;
+using WebAPI.Infra.Repo.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
 {
-    public class EstablishmentApplication : ApplicationBase
+    public class EstablishmentApplication : ApplicationBase, IEstablishmentApplication
     {
         #region Fields
 
-        private IEstablishmentRepository _establishmentRepository;
-        private PostalAddressApplication _postalAddressApplication;
+        private IEstablishmentService _establishmentService;
+        private IPostalAddressService _postalAddressService;
 
         #endregion
 
-        public EstablishmentApplication(IEstablishmentRepository establishmentRepository,
-            PostalAddressApplication postalAddressApplication,
+        public EstablishmentApplication(IEstablishmentService establishmentService,
+            IPostalAddressService postalAddressService,
             IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-            _establishmentRepository = establishmentRepository;
-            _postalAddressApplication = postalAddressApplication;
+            _establishmentService = establishmentService;
+            _postalAddressService = postalAddressService;
         }
 
         #region Behaviors
 
-        public Establishment Save(Establishment establishment)
+        public EstablishmentViewModel Save(EstablishmentViewModel establishmentViewModel)
         {
+            Establishment establishment = null;
+
             try
             {
                 Begin();
 
-                if (establishment.PostalAddress != null)
-                    establishment.PostalAddress = _postalAddressApplication.Save(establishment.PostalAddress);
+                establishment = Mapper.Map<EstablishmentViewModel, Establishment>(establishmentViewModel);
 
-                if (establishment.EstablishmentId == 0)
-                {
-                    establishment.Created = DateTime.Now;
-                    establishment = _establishmentRepository.Create(establishment);
-                }
-                else
-                    establishment = _establishmentRepository.Update(establishment);
+                if (establishment.PostalAddress != null)
+                    establishment.PostalAddress = _postalAddressService.Save(establishment.PostalAddress);
+                
+                establishment = _establishmentService.Save(establishment);
 
                 Commit();
             }
             catch
             {
                 Rollback();
-                establishment = null;
             }
 
-            return establishment;
+            return Mapper.Map<Establishment, EstablishmentViewModel>(establishment);
         }
 
-        public Establishment Get(long id)
+        public EstablishmentViewModel Get(long id)
         {
-            return _establishmentRepository.Get(id);
+            return Mapper.Map<Establishment, EstablishmentViewModel>(_establishmentService.Get(id));
         }
 
-        public IEnumerable<Establishment> List()
+        public IEnumerable<EstablishmentViewModel> List()
         {
-            return _establishmentRepository.List();
+            return Mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentViewModel>>
+                (_establishmentService.List());
         }
 
-        public IEnumerable<Establishment> ListByTag(string tag)
+        public IEnumerable<EstablishmentViewModel> ListByTag(string tag)
         {
-            return _establishmentRepository.ListByTag(tag);
+            return Mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentViewModel>>
+                (_establishmentService.ListByTag(tag));
         }
 
         public bool Remove(long id)
@@ -74,10 +76,7 @@ namespace WebAPI.Application
             {
                 Begin();
 
-                var establishment = Get(id);
-                establishment.Deleted = true;
-
-                _establishmentRepository.Update(establishment);
+                _establishmentService.Remove(id);
 
                 Commit();
             }
