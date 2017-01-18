@@ -10,7 +10,7 @@ Atualmente o projeto está dividido da seguinte maneira:
 4. Unit Test
 5. User Interface (ASP.NET Web API)
 
-Além das camadas, o projeto conta com os conceitos de DI, Unit of Work e Entity Code First, através dos frameworks: Ninject, Migrations e Entity Framework.
+Além das camadas, o projeto conta com os conceitos de DI, Unit of Work e Entity Code First, através dos frameworks: SimpleInjector, Migrations e Entity Framework.
 Os domains ainda estão bastante anêmicos, porém é um questão de evolução. Por essas e outras, você precisa contribuir com este projeto.
 
 ### Tecnologias envolvidas
@@ -18,7 +18,7 @@ Os domains ainda estão bastante anêmicos, porém é um questão de evolução.
 * .NET Framework 4.5.1
 * ASP.NET C# Web API 5.2.3
 * Entity Framework 6.1.3
-* Ninject 3.2.2.0
+* SimpleInjector 3.3.2
 * AutoMapper 4.2.1
 * MySql.Data 6.9.8
 * MySQL Server 5.6.26 (Community Server)
