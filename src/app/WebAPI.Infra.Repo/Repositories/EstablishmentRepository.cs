@@ -8,7 +8,7 @@ namespace WebAPI.Infra.Repo.Repositories
 {
     public class EstablishmentRepository : Repository<Establishment>, IEstablishmentRepository
     {
-        public EstablishmentRepository(ContextManager manager)
+        public EstablishmentRepository(Context manager)
             : base(manager)
         {
         }
@@ -22,9 +22,9 @@ namespace WebAPI.Infra.Repo.Repositories
 
         public IEnumerable<Establishment> ListByTag(string tag)
         {
-            if (!_manager.TestDatabase()) return null;
+            if (!_manager.TestConnection()) return null;
 
-            return ListAvailable(_manager.Context.Set<Establishment>().Where(o => o.Tags.Contains(tag)));
+            return ListAvailable(_manager.Set<Establishment>().Where(o => o.Tags.Contains(tag)));
         }
 
         private IEnumerable<Establishment> ListAvailable(IEnumerable<Establishment> establishments) 

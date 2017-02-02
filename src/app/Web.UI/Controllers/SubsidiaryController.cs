@@ -65,6 +65,17 @@ namespace Web.UI.Controllers
             return Ok(FormatResult(1, subsidiary));
         }
 
+        [HttpPatch]
+        public IHttpActionResult AddEstablishment(long id, [FromBody]EstablishmentViewModel entity)
+        {
+            if (id <= 0)
+                return Content(HttpStatusCode.BadRequest, FormatResult(2, id, "ID não é válido"));
+
+            var subsidiary = _subsidiaryApplication.AddEstablishment(id, entity);
+
+            return Ok(FormatResult(1, subsidiary));
+        }
+
         [HttpDelete]
         public IHttpActionResult Remove(long id)
         {
@@ -88,6 +99,16 @@ namespace Web.UI.Controllers
                 Result = result,
                 Code = code
             };
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _subsidiaryApplication.Dispose();
+            }
+
+            base.Dispose(disposing);
         }
 
         #endregion

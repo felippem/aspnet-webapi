@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebAPI.Domain.Interfaces.Repository
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> : IDisposable where TEntity : class
     {
         TEntity Create(TEntity obj);
         void Delete(TEntity obj);

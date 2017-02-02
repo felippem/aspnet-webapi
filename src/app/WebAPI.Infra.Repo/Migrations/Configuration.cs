@@ -4,7 +4,7 @@ using WebAPI.Infra.Repo.DataContext;
 
 namespace WebAPI.Infra.Repo.Migrations
 {
-    public class Configuration : DbMigrationsConfiguration<Db>
+    public class Configuration : DbMigrationsConfiguration<Context>
     {
         public Configuration()
         {

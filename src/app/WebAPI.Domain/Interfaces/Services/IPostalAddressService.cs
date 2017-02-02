@@ -1,8 +1,9 @@
-﻿using WebAPI.Domain.Entities;
+﻿using System;
+using WebAPI.Domain.Entities;
 
 namespace WebAPI.Domain.Interfaces.Services
 {
-    public interface IPostalAddressService
+    public interface IPostalAddressService : IDisposable
     {
         PostalAddress Save(PostalAddress postalAddress);
     }

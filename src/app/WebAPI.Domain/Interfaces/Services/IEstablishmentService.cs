@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WebAPI.Domain.Entities;
 
 namespace WebAPI.Domain.Interfaces.Services
 {
-    public interface IEstablishmentService
+    public interface IEstablishmentService : IDisposable
     {
         Establishment Save(Establishment establishment);
         Establishment Get(long id);

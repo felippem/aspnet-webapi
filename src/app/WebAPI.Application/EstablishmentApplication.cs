@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using WebAPI.Application.Interfaces;
 using WebAPI.Application.ViewModels;
@@ -48,6 +49,7 @@ namespace WebAPI.Application
             catch
             {
                 Rollback();
+                establishment = null;
             }
 
             return Mapper.Map<Establishment, EstablishmentViewModel>(establishment);
@@ -87,6 +89,13 @@ namespace WebAPI.Application
             }
 
             return true;
+        }
+
+        public void Dispose()
+        {
+            _establishmentService.Dispose();
+            _postalAddressService.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         #endregion

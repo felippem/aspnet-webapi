@@ -16,14 +16,17 @@ namespace Web.UI
             config.Routes.MapHttpRoute(
                 name: "defaultapi",
                 routeTemplate: "{version}/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+                defaults: new { id = RouteParameter.Optional });
 
             config.Routes.MapHttpRoute(
                 name: "0",
                 routeTemplate: "{version}/subsidiary/establishment/{establishmentId}",
-                defaults: new { controller = "Subsidiary", action = "ListBy" }
-            );
+                defaults: new { controller = "Subsidiary", action = "ListBy" });
+
+            config.Routes.MapHttpRoute(
+                name: "1",
+                routeTemplate: "{version}/subsidiary/{id}/establishment",
+                defaults: new { controller = "Subsidiary", action = "AddEstablishment" });
         }
 
         #endregion

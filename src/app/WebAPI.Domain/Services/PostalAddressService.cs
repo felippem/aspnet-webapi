@@ -33,6 +33,12 @@ namespace WebAPI.Domain.Services
             return postalAddress;
         }
 
+        public void Dispose()
+        {
+            _postalAddressRepository.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
         #endregion
     }
 }

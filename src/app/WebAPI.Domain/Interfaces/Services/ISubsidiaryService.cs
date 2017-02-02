@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WebAPI.Domain.Entities;
 
 namespace WebAPI.Domain.Interfaces.Services
 {
-    public interface ISubsidiaryService
+    public interface ISubsidiaryService : IDisposable
     {
         Subsidiary Get(long id);
         IEnumerable<Subsidiary> List();

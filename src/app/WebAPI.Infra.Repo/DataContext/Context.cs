@@ -1,4 +1,5 @@
 ﻿using MySql.Data.Entity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -10,13 +11,9 @@ using WebAPI.Infra.Repo.DataContext.EntityConfig;
 namespace WebAPI.Infra.Repo.DataContext
 {
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
-    public class Db : DbContext
+    public class Context : DbContext
     {
-        public Db(string connectionString)
-        {
-        }
-
-        public Db() : base("ConnectionString")
+        public Context() : base("ConnectionString")
         {
         }
 
@@ -95,6 +92,24 @@ namespace WebAPI.Infra.Repo.DataContext
                {
                    m.MapKey("EstablishmentId");
                });
+        }
+
+        public bool TestConnection()
+        {
+            try
+            {
+                if (!this.Database.Exists())
+                {
+                    Console.WriteLine("A conexão com o banco de dados falhou.");
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
 
         #endregion

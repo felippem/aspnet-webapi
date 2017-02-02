@@ -5,11 +5,11 @@ namespace WebAPI.Infra.Repo.DataContext.UnitOfWork
     {
         #region Fields
 
-        private ContextManager _manager;
+        private Context _manager;
 
         #endregion
 
-        public UnityOfWork(ContextManager manager)
+        public UnityOfWork(Context manager)
         {
             _manager = manager;
         }
@@ -18,28 +18,28 @@ namespace WebAPI.Infra.Repo.DataContext.UnitOfWork
 
         public void Begin()
         {
-            if (!_manager.TestDatabase()) return;
+            if (!_manager.TestConnection()) return;
 
-            _manager.Context.Database.BeginTransaction();
+            _manager.Database.BeginTransaction();
         }
 
         public void Commit()
         {
-            if (!_manager.TestDatabase()) return;
+            if (!_manager.TestConnection()) return;
 
-            _manager.Context.SaveChanges();
+            _manager.SaveChanges();
 
-            if (_manager.Context.Database.CurrentTransaction == null) return;
+            if (_manager.Database.CurrentTransaction == null) return;
 
-            _manager.Context.Database.CurrentTransaction.Commit();
+            _manager.Database.CurrentTransaction.Commit();
         }
 
         public void Rollback()
         {
-            if (!_manager.TestDatabase() || _manager.Context.Database.CurrentTransaction == null) 
+            if (!_manager.TestConnection() || _manager.Database.CurrentTransaction == null) 
                 return;
 
-            _manager.Context.Database.CurrentTransaction.Rollback();
+            _manager.Database.CurrentTransaction.Rollback();
         }
 
         #endregion

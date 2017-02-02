@@ -37,8 +37,10 @@ namespace WebAPI.Domain.Services
         public void Remove(long id)
         {
             var establishment = Get(id);
-            establishment.Deleted = true;
 
+            if (establishment == null) return;
+
+            establishment.Deleted = true;
             _establishmentRepository.Update(establishment);
         }
 
@@ -55,6 +57,12 @@ namespace WebAPI.Domain.Services
         public IEnumerable<Establishment> ListByTag(string tag)
         {
             return _establishmentRepository.ListByTag(tag);
+        }
+
+        public void Dispose()
+        {
+            _establishmentRepository.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         #endregion

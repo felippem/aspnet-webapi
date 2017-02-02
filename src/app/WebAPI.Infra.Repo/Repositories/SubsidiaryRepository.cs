@@ -8,7 +8,7 @@ namespace WebAPI.Infra.Repo.Repositories
 {
     public class SubsidiaryRepository : Repository<Subsidiary>, ISubsidiaryRepository
     {
-        public SubsidiaryRepository(ContextManager manager)
+        public SubsidiaryRepository(Context manager)
             : base(manager)
         {
         }
@@ -22,9 +22,9 @@ namespace WebAPI.Infra.Repo.Repositories
 
         public IEnumerable<Subsidiary> List(long establishmentId)
         {
-            if (!_manager.TestDatabase()) return null;
+            if (!_manager.TestConnection()) return null;
 
-            return _manager.Context.Set<Subsidiary>().Where(o => o.Establishment.EstablishmentId == establishmentId);
+            return _manager.Set<Subsidiary>().Where(o => o.Establishment.EstablishmentId == establishmentId);
         }
 
         private IEnumerable<Subsidiary> ListAvailable(IEnumerable<Subsidiary> subsidiaries)

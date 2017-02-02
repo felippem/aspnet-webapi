@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using WebAPI.Domain.Entities;
 using WebAPI.Domain.Interfaces.Repository;
 using WebAPI.Infra.Repo.DataContext;
 
@@ -10,11 +12,11 @@ namespace WebAPI.Infra.Repo.Repositories
     {
         #region Fields
 
-        protected ContextManager _manager { get; private set; }
+        protected Context _manager { get; private set; }
 
         #endregion
 
-        public Repository(ContextManager manager)
+        public Repository(Context manager)
         {
             _manager = manager;
         }
@@ -23,46 +25,52 @@ namespace WebAPI.Infra.Repo.Repositories
 
         public TEntity Create(TEntity obj)
         {
-            if (!_manager.TestDatabase()) return null;
+            if (!_manager.TestConnection()) return null;
 
-            return _manager.Context.Set<TEntity>().Add(obj);
+            return _manager.Set<TEntity>().Add(obj);
         }
 
         public void Delete(TEntity obj)
         {
-            if (!_manager.TestDatabase()) return;
+            if (!_manager.TestConnection()) return;
 
-            _manager.Context.Set<TEntity>().Remove(obj);
+            _manager.Set<TEntity>().Remove(obj);
         }
 
         public void Delete(long id)
         {
-            if (!_manager.TestDatabase()) return;
+            if (!_manager.TestConnection()) return;
 
-            _manager.Context.Set<TEntity>().Remove(Get(id));
+            _manager.Set<TEntity>().Remove(Get(id));
         }
 
         public TEntity Get(long id)
         {
-            if (!_manager.TestDatabase()) return null;
+            if (!_manager.TestConnection()) return null;
 
-            return _manager.Context.Set<TEntity>().Find(id);
+            return _manager.Set<TEntity>().Find(id);
         }
 
         public virtual IEnumerable<TEntity> List()
         {
-            if (!_manager.TestDatabase()) return null;
+            if (!_manager.TestConnection()) return null;
 
-            return _manager.Context.Set<TEntity>().ToList();
+            return _manager.Set<TEntity>().ToList();
         }
 
         public TEntity Update(TEntity obj)
         {
-            if (!_manager.TestDatabase()) return null;
+            if (!_manager.TestConnection()) return null;
 
-            _manager.Context.Entry(obj).State = EntityState.Modified;
-            
+            _manager.Entry<TEntity>(obj).State = EntityState.Modified;
+
             return obj;
+        }
+
+        public void Dispose()
+        {
+            _manager.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         #endregion

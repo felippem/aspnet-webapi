@@ -54,11 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataContext\ContextManager.cs" />
     <Compile Include="DataContext\EntityConfig\SubsidiaryConfig.cs" />
     <Compile Include="DataContext\EntityConfig\PostalAddressConfig.cs" />
     <Compile Include="DataContext\EntityConfig\EstablishmentConfig.cs" />
-    <Compile Include="DataContext\Db.cs" />
+    <Compile Include="DataContext\Context.cs" />
     <Compile Include="DataContext\Singleton.cs" />
     <Compile Include="DataContext\UnitOfWork\UnityOfWork.cs" />
     <Compile Include="DataContext\UnitOfWork\IUnitOfWork.cs" />

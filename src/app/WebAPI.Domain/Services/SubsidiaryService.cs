@@ -52,9 +52,17 @@ namespace WebAPI.Domain.Services
         public void Remove(long id)
         {
             var subsidiary = Get(id);
-            subsidiary.Deleted = true;
 
+            if (subsidiary == null) return;
+
+            subsidiary.Deleted = true;
             _subsidiaryRepository.Update(subsidiary);
+        }
+
+        public void Dispose()
+        {
+            _subsidiaryRepository.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         #endregion

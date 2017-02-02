@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WebAPI.Application.ViewModels;
 
 namespace WebAPI.Application.Interfaces
 {
-    public interface IEstablishmentApplication
+    public interface IEstablishmentApplication : IDisposable
     {
         EstablishmentViewModel Get(long id);
         IEnumerable<EstablishmentViewModel> List();

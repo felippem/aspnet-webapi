@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using WebAPI.Application.Interfaces;
 using WebAPI.Application.ViewModels;
@@ -31,6 +32,30 @@ namespace WebAPI.Application
 
         #region Behaviors
 
+        public SubsidiaryViewModel AddEstablishment(long id, EstablishmentViewModel establishmentViewModel)
+        {
+            Subsidiary subsidiary = null;
+            
+            try
+            {
+                subsidiary = _subsidiaryService.Get(id);
+
+                if (subsidiary != null)
+                {
+                    subsidiary.Establishment = _establishmentService.Get(establishmentViewModel.EstablishmentKey);
+
+                    subsidiary = _subsidiaryService.Save(subsidiary);
+                    Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                establishmentViewModel = null;
+            }
+
+            return Mapper.Map<Subsidiary, SubsidiaryViewModel>(subsidiary);
+        }
+
         public SubsidiaryViewModel Save(SubsidiaryViewModel subsidiaryViewModel)
         {
             Subsidiary subsidiary = null;
@@ -44,16 +69,14 @@ namespace WebAPI.Application
                 if (subsidiary.PostalAddress != null)
                     subsidiary.PostalAddress = _postalAddressService.Save(subsidiary.PostalAddress);
 
-                if (subsidiary.Establishment != null && subsidiary.Establishment.EstablishmentId > 0)
-                    subsidiary.Establishment = _establishmentService.Get(subsidiary.Establishment.EstablishmentId);
-                
                 subsidiary = _subsidiaryService.Save(subsidiary);
-                
+
                 Commit();
             }
             catch
             {
                 Rollback();
+                subsidiary = null;
             }
 
             return Mapper.Map<Subsidiary, SubsidiaryViewModel>(subsidiary);
@@ -93,6 +116,13 @@ namespace WebAPI.Application
             }
 
             return true;
+        }
+
+        public void Dispose()
+        {
+            _subsidiaryService.Dispose();
+            _postalAddressService.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         #endregion

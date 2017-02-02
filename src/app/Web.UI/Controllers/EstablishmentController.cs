@@ -85,6 +85,16 @@ namespace Web.UI.Controllers
             };
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _establishmentApplication.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
         #endregion
     }
 }

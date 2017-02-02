@@ -1,12 +1,11 @@
-[assembly: WebActivator.PostApplicationStartMethod(typeof(Web.UI.App_Start.SimpleInjectorInitializer), "Initialize")]
+using SimpleInjector;
+using SimpleInjector.Integration.WebApi;
+using System.Web.Http;
+using WebAPI.Infra.IoC;
 
+[assembly: WebActivator.PostApplicationStartMethod(typeof(Web.UI.App_Start.SimpleInjectorInitializer), "Initialize")]
 namespace Web.UI.App_Start
 {
-    using SimpleInjector;
-    using SimpleInjector.Integration.WebApi;
-    using System.Web.Http;
-    using WebAPI.Infra.IoC;
-    
     public static class SimpleInjectorInitializer
     {
         #region Behaviors

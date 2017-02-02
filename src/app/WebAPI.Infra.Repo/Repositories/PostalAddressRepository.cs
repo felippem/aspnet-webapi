@@ -6,7 +6,7 @@ namespace WebAPI.Infra.Repo.Repositories
 {
     public class PostalAddressRepository : Repository<PostalAddress>, IPostalAddressRepository
     {
-        public PostalAddressRepository(ContextManager manager)
+        public PostalAddressRepository(Context manager)
             : base(manager)
         {
         }

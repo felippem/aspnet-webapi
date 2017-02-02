@@ -28,7 +28,7 @@ namespace WebAPI.Infra.IoC
             container.Register<ISubsidiaryRepository, SubsidiaryRepository>(Lifestyle.Scoped);
 
             container.Register<IUnitOfWork, UnityOfWork>(Lifestyle.Scoped);
-            container.Register<ContextManager>(Lifestyle.Singleton);
+            container.Register<Context>(Lifestyle.Scoped);
         }
 
         #endregion
