@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using WebAPI.Application.Interfaces;
 using WebAPI.Application.ViewModels;
 using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces.Services;
+using WebAPI.Domain.Interfaces.Repository;
 using WebAPI.Infra.Repo.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
@@ -13,21 +13,21 @@ namespace WebAPI.Application
     {
         #region Fields
 
-        private ISubsidiaryService _subsidiaryService;
-        private IPostalAddressService _postalAddressService;
-        private IEstablishmentService _establishmentService;
+        private ISubsidiaryRepository _subsidiaryRepository;
+        private IPostalAddressApplication _postalAddressApplication;
+        private IEstablishmentRepository _establishmentRepository;
 
         #endregion
 
-        public SubsidiaryApplication(ISubsidiaryService subsidiaryService,
-            IPostalAddressService postalAddressService,
-            IEstablishmentService establishmentService,
+        public SubsidiaryApplication(ISubsidiaryRepository subsidiaryRepository,
+            IPostalAddressApplication postalAddressApplication,
+            IEstablishmentRepository establishmentRepository,
             IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-            _subsidiaryService = subsidiaryService;
-            _postalAddressService = postalAddressService;
-            _establishmentService = establishmentService;
+            _subsidiaryRepository = subsidiaryRepository;
+            _postalAddressApplication = postalAddressApplication;
+            _establishmentRepository = establishmentRepository;
         }
 
         #region Behaviors
@@ -38,17 +38,17 @@ namespace WebAPI.Application
             
             try
             {
-                subsidiary = _subsidiaryService.Get(id);
+                subsidiary = _subsidiaryRepository.Get(id);
 
                 if (subsidiary != null)
                 {
-                    subsidiary.Establishment = _establishmentService.Get(establishmentViewModel.EstablishmentKey);
+                    subsidiary.Establishment = _establishmentRepository.Get(establishmentViewModel.EstablishmentKey);
 
-                    subsidiary = _subsidiaryService.Save(subsidiary);
+                    subsidiary = _subsidiaryRepository.Update(subsidiary);
                     Commit();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 establishmentViewModel = null;
             }
@@ -67,9 +67,15 @@ namespace WebAPI.Application
                 subsidiary = Mapper.Map<SubsidiaryViewModel, Subsidiary>(subsidiaryViewModel);
 
                 if (subsidiary.PostalAddress != null)
-                    subsidiary.PostalAddress = _postalAddressService.Save(subsidiary.PostalAddress);
+                    subsidiary.PostalAddress = _postalAddressApplication.Save(subsidiary.PostalAddress);
 
-                subsidiary = _subsidiaryService.Save(subsidiary);
+                if (subsidiary.SubsidiaryId == 0)
+                {
+                    subsidiary.Created = DateTime.Now;
+                    subsidiary = _subsidiaryRepository.Create(subsidiary);
+                }
+                else
+                    subsidiary = _subsidiaryRepository.Update(subsidiary);
 
                 Commit();
             }
@@ -84,34 +90,30 @@ namespace WebAPI.Application
 
         public SubsidiaryViewModel Get(long id)
         {
-            return Mapper.Map<Subsidiary, SubsidiaryViewModel>(_subsidiaryService.Get(id));
+            return Mapper.Map<Subsidiary, SubsidiaryViewModel>(_subsidiaryRepository.Get(id));
         }
 
         public IEnumerable<SubsidiaryViewModel> List()
         {
             return Mapper.Map<IEnumerable<Subsidiary>, IEnumerable<SubsidiaryViewModel>>
-                (_subsidiaryService.List());
+                (_subsidiaryRepository.List());
         }
 
         public IEnumerable<SubsidiaryViewModel> List(long establishmentId)
         {
             return Mapper.Map<IEnumerable<Subsidiary>, IEnumerable<SubsidiaryViewModel>>
-                (_subsidiaryService.List(establishmentId));
+                (_subsidiaryRepository.List(establishmentId));
         }
 
         public bool Remove(long id)
         {
             try
             {
-                Begin();
-
-                _subsidiaryService.Remove(id);
-
+                _subsidiaryRepository.Delete(id);
                 Commit();
             }
             catch
             {
-                Rollback();
                 return false;
             }
 
@@ -120,8 +122,9 @@ namespace WebAPI.Application
 
         public void Dispose()
         {
-            _subsidiaryService.Dispose();
-            _postalAddressService.Dispose();
+            _subsidiaryRepository.Dispose();
+            _postalAddressApplication.Dispose();
+            _establishmentRepository.Dispose();
             GC.SuppressFinalize(this);
         }
 

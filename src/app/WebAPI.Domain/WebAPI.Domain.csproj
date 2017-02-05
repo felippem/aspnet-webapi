@@ -43,13 +43,12 @@
     <Compile Include="Interfaces\Repository\IRepository.cs" />
     <Compile Include="Interfaces\Repository\ISubsidiaryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\EstablishmentService.cs" />
     <Compile Include="Interfaces\Services\IPostalAddressService.cs" />
     <Compile Include="Interfaces\Services\ISubsidiaryService.cs" />
-    <Compile Include="Services\PostalAddressService.cs" />
-    <Compile Include="Services\SubsidiaryService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

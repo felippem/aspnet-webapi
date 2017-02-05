@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using WebAPI.Application.Interfaces;
 using WebAPI.Application.ViewModels;
 using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces.Services;
+using WebAPI.Domain.Interfaces.Repository;
 using WebAPI.Infra.Repo.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
@@ -13,18 +13,18 @@ namespace WebAPI.Application
     {
         #region Fields
 
-        private IEstablishmentService _establishmentService;
-        private IPostalAddressService _postalAddressService;
+        private IEstablishmentRepository _establishmentRepository;
+        private IPostalAddressApplication _postalAddressApplication;
 
         #endregion
 
-        public EstablishmentApplication(IEstablishmentService establishmentService,
-            IPostalAddressService postalAddressService,
+        public EstablishmentApplication(IEstablishmentRepository establishmentRepository,
+            IPostalAddressApplication postalAddressApplication,
             IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-            _establishmentService = establishmentService;
-            _postalAddressService = postalAddressService;
+            _establishmentRepository = establishmentRepository;
+            _postalAddressApplication = postalAddressApplication;
         }
 
         #region Behaviors
@@ -40,9 +40,15 @@ namespace WebAPI.Application
                 establishment = Mapper.Map<EstablishmentViewModel, Establishment>(establishmentViewModel);
 
                 if (establishment.PostalAddress != null)
-                    establishment.PostalAddress = _postalAddressService.Save(establishment.PostalAddress);
-                
-                establishment = _establishmentService.Save(establishment);
+                    establishment.PostalAddress = _postalAddressApplication.Save(establishment.PostalAddress);
+
+                if (establishment.EstablishmentId == 0)
+                {
+                    establishment.Created = DateTime.Now;
+                    establishment = _establishmentRepository.Create(establishment);
+                }
+                else
+                    establishment = _establishmentRepository.Update(establishment);
 
                 Commit();
             }
@@ -57,34 +63,37 @@ namespace WebAPI.Application
 
         public EstablishmentViewModel Get(long id)
         {
-            return Mapper.Map<Establishment, EstablishmentViewModel>(_establishmentService.Get(id));
+            return Mapper.Map<Establishment, EstablishmentViewModel>(_establishmentRepository.Get(id));
         }
 
         public IEnumerable<EstablishmentViewModel> List()
         {
             return Mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentViewModel>>
-                (_establishmentService.List());
+                (_establishmentRepository.List());
         }
 
         public IEnumerable<EstablishmentViewModel> ListByTag(string tag)
         {
             return Mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentViewModel>>
-                (_establishmentService.ListByTag(tag));
+                (_establishmentRepository.ListByTag(tag));
         }
 
         public bool Remove(long id)
         {
             try
             {
-                Begin();
+                var establishment = _establishmentRepository.Get(id);
 
-                _establishmentService.Remove(id);
+                if (establishment != null)
+                {
+                    establishment.Deleted = true;
+                    _establishmentRepository.Update(establishment);
 
-                Commit();
+                    Commit();
+                }
             }
             catch
             {
-                Rollback();
                 return false;
             }
 
@@ -93,8 +102,8 @@ namespace WebAPI.Application
 
         public void Dispose()
         {
-            _establishmentService.Dispose();
-            _postalAddressService.Dispose();
+            _establishmentRepository.Dispose();
+            _postalAddressApplication.Dispose();
             GC.SuppressFinalize(this);
         }
 

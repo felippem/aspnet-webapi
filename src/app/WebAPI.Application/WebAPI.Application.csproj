@@ -49,6 +49,8 @@
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Interfaces\IEstablishmentApplication.cs" />
     <Compile Include="Interfaces\ISubsidiaryApplication.cs" />
+    <Compile Include="Interfaces\IPostalAddressApplication.cs" />
+    <Compile Include="PostalAddressApplication.cs" />
     <Compile Include="SubsidiaryApplication.cs" />
     <Compile Include="EstablishmentApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

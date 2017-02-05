@@ -1,21 +1,15 @@
 ﻿using System;
+using WebAPI.Application.Interfaces;
 using WebAPI.Domain.Entities;
 using WebAPI.Domain.Interfaces.Repository;
-using WebAPI.Domain.Interfaces.Services;
 
-namespace WebAPI.Domain.Services
+namespace WebAPI.Application
 {
-    public class PostalAddressService : IPostalAddressService
+    public class PostalAddressApplication : IPostalAddressApplication
     {
-        #region Fields
-
         private IPostalAddressRepository _postalAddressRepository;
-
-        #endregion
-
-        #region Behaviors
-
-        public PostalAddressService(IPostalAddressRepository postalAddressRepository)
+        
+        public PostalAddressApplication(IPostalAddressRepository postalAddressRepository)
         {
             _postalAddressRepository = postalAddressRepository;
         }
@@ -38,7 +32,5 @@ namespace WebAPI.Domain.Services
             _postalAddressRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-
-        #endregion
     }
 }
