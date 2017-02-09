@@ -9,18 +9,18 @@ using WebAPI.Infra.Repo.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
 {
-    public class SubsidiaryApplication : ApplicationBase, ISubsidiaryApplication
+    public class SubsidiaryAppService : ApplicationBase, ISubsidiaryAppService
     {
         #region Fields
 
         private ISubsidiaryService _subsidiaryService;
-        private IPostalAddressApplication _postalAddressApplication;
+        private IPostalAddressAppService _postalAddressApplication;
         private IEstablishmentService _establishmentService;
 
         #endregion
 
-        public SubsidiaryApplication(ISubsidiaryService subsidiaryService,
-            IPostalAddressApplication postalAddressApplication,
+        public SubsidiaryAppService(ISubsidiaryService subsidiaryService,
+            IPostalAddressAppService postalAddressApplication,
             IEstablishmentService establishmentService,
             IUnitOfWork unitOfWork)
             : base(unitOfWork)

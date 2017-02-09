@@ -12,11 +12,11 @@ namespace Web.UI.Controllers
     {
         #region Fields
 
-        private ISubsidiaryApplication _subsidiaryApplication;
+        private ISubsidiaryAppService _subsidiaryApplication;
 
         #endregion
 
-        public SubsidiaryController(ISubsidiaryApplication subsidiaryApplication)
+        public SubsidiaryController(ISubsidiaryAppService subsidiaryApplication)
         {
             _subsidiaryApplication = subsidiaryApplication;
         }

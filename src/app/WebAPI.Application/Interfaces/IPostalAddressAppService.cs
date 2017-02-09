@@ -3,7 +3,7 @@ using WebAPI.Domain.Entities;
 
 namespace WebAPI.Application.Interfaces
 {
-    public interface IPostalAddressApplication : IDisposable
+    public interface IPostalAddressAppService : IDisposable
     {
         PostalAddress Save(PostalAddress postalAddress);
     }

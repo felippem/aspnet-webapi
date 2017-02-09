@@ -4,7 +4,7 @@ using WebAPI.Application.ViewModels;
 
 namespace WebAPI.Application.Interfaces
 {
-    public interface ISubsidiaryApplication : IDisposable
+    public interface ISubsidiaryAppService : IDisposable
     {
         SubsidiaryViewModel AddEstablishment(long id, EstablishmentViewModel establishmentViewModel);
         SubsidiaryViewModel Get(long id);

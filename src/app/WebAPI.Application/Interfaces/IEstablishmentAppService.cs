@@ -4,7 +4,7 @@ using WebAPI.Application.ViewModels;
 
 namespace WebAPI.Application.Interfaces
 {
-    public interface IEstablishmentApplication : IDisposable
+    public interface IEstablishmentAppService : IDisposable
     {
         EstablishmentViewModel Get(long id);
         IEnumerable<EstablishmentViewModel> List();

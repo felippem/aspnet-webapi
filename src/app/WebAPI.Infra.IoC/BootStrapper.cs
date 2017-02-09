@@ -16,9 +16,9 @@ namespace WebAPI.Infra.IoC
 
         public static void RegisterServices(Container container)
         {
-            container.Register<IEstablishmentApplication, EstablishmentApplication>(Lifestyle.Scoped);
-            container.Register<ISubsidiaryApplication, SubsidiaryApplication>(Lifestyle.Scoped);
-            container.Register<IPostalAddressApplication, PostalAddressApplication>(Lifestyle.Scoped);
+            container.Register<IEstablishmentAppService, EstablishmentAppService>(Lifestyle.Scoped);
+            container.Register<ISubsidiaryAppService, SubsidiaryAppService>(Lifestyle.Scoped);
+            container.Register<IPostalAddressAppService, PostalAddressAppService>(Lifestyle.Scoped);
 
             container.Register<IEstablishmentService, EstablishmentService>(Lifestyle.Scoped);
             container.Register<IPostalAddressService, PostalAddressService>(Lifestyle.Scoped);

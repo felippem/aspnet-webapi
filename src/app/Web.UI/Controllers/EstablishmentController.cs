@@ -12,11 +12,11 @@ namespace Web.UI.Controllers
     {
         #region Fields
 
-        private IEstablishmentApplication _establishmentApplication;
+        private IEstablishmentAppService _establishmentApplication;
 
         #endregion
 
-        public EstablishmentController(IEstablishmentApplication establishmentApplication)
+        public EstablishmentController(IEstablishmentAppService establishmentApplication)
         {
             _establishmentApplication = establishmentApplication;
         }

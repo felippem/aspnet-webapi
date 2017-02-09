@@ -5,11 +5,11 @@ using WebAPI.Domain.Interfaces.Services;
 
 namespace WebAPI.Application
 {
-    public class PostalAddressApplication : IPostalAddressApplication
+    public class PostalAddressAppService : IPostalAddressAppService
     {
         private IPostalAddressService _postalAddressService;
 
-        public PostalAddressApplication(IPostalAddressService postalAddressService)
+        public PostalAddressAppService(IPostalAddressService postalAddressService)
         {
             _postalAddressService = postalAddressService;
         }

@@ -9,17 +9,17 @@ using WebAPI.Infra.Repo.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
 {
-    public class EstablishmentApplication : ApplicationBase, IEstablishmentApplication
+    public class EstablishmentAppService : ApplicationBase, IEstablishmentAppService
     {
         #region Fields
 
         private IEstablishmentService _establishmentService;
-        private IPostalAddressApplication _postalAddressApplication;
+        private IPostalAddressAppService _postalAddressApplication;
 
         #endregion
 
-        public EstablishmentApplication(IEstablishmentService establishmentService,
-            IPostalAddressApplication postalAddressApplication,
+        public EstablishmentAppService(IEstablishmentService establishmentService,
+            IPostalAddressAppService postalAddressApplication,
             IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
