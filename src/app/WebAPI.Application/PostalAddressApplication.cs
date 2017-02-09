@@ -1,35 +1,29 @@
 ﻿using System;
 using WebAPI.Application.Interfaces;
 using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces.Repository;
+using WebAPI.Domain.Interfaces.Services;
 
 namespace WebAPI.Application
 {
     public class PostalAddressApplication : IPostalAddressApplication
     {
-        private IPostalAddressRepository _postalAddressRepository;
-        
-        public PostalAddressApplication(IPostalAddressRepository postalAddressRepository)
+        private IPostalAddressService _postalAddressService;
+
+        public PostalAddressApplication(IPostalAddressService postalAddressService)
         {
-            _postalAddressRepository = postalAddressRepository;
+            _postalAddressService = postalAddressService;
         }
 
         public PostalAddress Save(PostalAddress postalAddress)
         {
-            if (postalAddress.PostalAddressId == 0)
-            {
-                postalAddress.Created = DateTime.Now;
-                postalAddress = _postalAddressRepository.Create(postalAddress);
-            }
-            else
-                postalAddress = _postalAddressRepository.Update(postalAddress);
+            postalAddress = _postalAddressService.Save(postalAddress);
 
             return postalAddress;
         }
 
         public void Dispose()
         {
-            _postalAddressRepository.Dispose();
+            _postalAddressService.Dispose();
             GC.SuppressFinalize(this);
         }
     }

@@ -17,10 +17,7 @@
 						"url": "http://localhost:50180/v1/establishment",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -31,10 +28,7 @@
 						"url": "http://localhost:50180/v1/establishment/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -42,13 +36,10 @@
 				{
 					"name": "List by tag",
 					"request": {
-						"url": "http://localhost:50180/v1/establishment/?tag=familia",
+						"url": "http://localhost:50180/v1/establishment/?tag=coco",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -59,10 +50,7 @@
 						"url": "http://localhost:50180/v1/establishment/1",
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -119,10 +107,7 @@
 						"url": "http://localhost:50180/v1/subsidiary",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -130,13 +115,10 @@
 				{
 					"name": "Get",
 					"request": {
-						"url": "http://localhost:50180/v1/subsidiary/1",
+						"url": "http://localhost:50180/v1/subsidiary/6",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -147,10 +129,7 @@
 						"url": "http://localhost:50180/v1/subsidiary/1",
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -169,7 +148,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"acceptsReservations\": false,\n    \"currenciesAccepted\": \"R$\",\n    \"contactName\": \"Jordan\",\n    \"created\": \"2016-08-13T00:00:00\",\n    \"deleted\": false,\n    \"enabled\": true,\n    \"email\": \"jordan@outback.com\",\n    \"openingHours\": null,\n    \"priceRange\": \"$$$$\",\n    \"telephone\": \"1184360289\",\n    \"establishment\": {\n        \"establishmentKey\": 1\n    }\n}"
+							"raw": "{\n    \"acceptsReservations\": false,\n    \"currenciesAccepted\": \"R$\",\n    \"contactName\": \"Sophi\",\n    \"created\": \"2017-01-25T00:00:00\",\n    \"deleted\": false,\n    \"enabled\": true,\n    \"email\": \"jordan@outback.com\",\n    \"openingHours\": null,\n    \"priceRange\": \"$$$$\",\n    \"telephone\": \"1184360289\"\n}"
 						},
 						"description": ""
 					},
@@ -189,7 +168,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"subsidiaryKey\": 1,\n    \"acceptsReservations\": false,\n    \"currenciesAccepted\": \"R$\",\n    \"contactName\": \"Julye\",\n    \"created\": \"2016-08-13T00:00:00\",\n    \"deleted\": false,\n    \"enabled\": true,\n    \"email\": \"jordan@outback.com\",\n    \"openingHours\": null,\n    \"priceRange\": \"$$$$\",\n    \"telephone\": \"1184360289\",\n    \"establishment\": {\n        \"establishmentKey\": 1\n    }\n}"
+							"raw": "{\n    \"subsidiaryKey\": 6,\n    \"acceptsReservations\": false,\n    \"currenciesAccepted\": \"R$\",\n    \"contactName\": \"Gustavo & Gabio\",\n    \"created\": \"2017-01-25T00:00:00\",\n    \"deleted\": false,\n    \"enabled\": true,\n    \"email\": \"jordan@outback.com\",\n    \"openingHours\": null,\n    \"priceRange\": \"$$$$\",\n    \"telephone\": \"1184360289\",\n    \"postalAddress\": {\n      \"postalAddressKey\": 3,\n      \"country\": \"CANNNN\",\n      \"complement\": \"Cj 230\",\n      \"created\": \"0001-01-01T00:00:00\",\n      \"geoCoordinates\": null,\n      \"locality\": \"Mauá\",\n      \"number\": \"123\",\n      \"postalCode\": \"09371076\",\n      \"region\": \"São Paulo\",\n      \"streetAddress\": \"Rua Talada\"\n    }\n}"
 						},
 						"description": ""
 					},
@@ -198,12 +177,29 @@
 				{
 					"name": "List by establishment",
 					"request": {
-						"url": "http://localhost:50180/v1/subsidiary/establishment/1",
+						"url": "http://localhost:50180/v1/subsidiary/establishment/20552",
 						"method": "GET",
 						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add establishment",
+					"request": {
+						"url": "http://localhost:50180/v1/subsidiary/6/establishment",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "{\n\t\"establishmentKey\": 20551\n}"
 						},
 						"description": ""
 					},

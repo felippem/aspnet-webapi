@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using WebAPI.Application.Interfaces;
 using WebAPI.Application.ViewModels;
 using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces.Repository;
+using WebAPI.Domain.Interfaces.Services;
 using WebAPI.Infra.Repo.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
@@ -13,17 +13,17 @@ namespace WebAPI.Application
     {
         #region Fields
 
-        private IEstablishmentRepository _establishmentRepository;
+        private IEstablishmentService _establishmentService;
         private IPostalAddressApplication _postalAddressApplication;
 
         #endregion
 
-        public EstablishmentApplication(IEstablishmentRepository establishmentRepository,
+        public EstablishmentApplication(IEstablishmentService establishmentService,
             IPostalAddressApplication postalAddressApplication,
             IUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-            _establishmentRepository = establishmentRepository;
+            _establishmentService = establishmentService;
             _postalAddressApplication = postalAddressApplication;
         }
 
@@ -41,14 +41,8 @@ namespace WebAPI.Application
 
                 if (establishment.PostalAddress != null)
                     establishment.PostalAddress = _postalAddressApplication.Save(establishment.PostalAddress);
-
-                if (establishment.EstablishmentId == 0)
-                {
-                    establishment.Created = DateTime.Now;
-                    establishment = _establishmentRepository.Create(establishment);
-                }
-                else
-                    establishment = _establishmentRepository.Update(establishment);
+                
+                establishment = _establishmentService.Save(establishment);
 
                 Commit();
             }
@@ -63,31 +57,31 @@ namespace WebAPI.Application
 
         public EstablishmentViewModel Get(long id)
         {
-            return Mapper.Map<Establishment, EstablishmentViewModel>(_establishmentRepository.Get(id));
+            return Mapper.Map<Establishment, EstablishmentViewModel>(_establishmentService.Get(id));
         }
 
         public IEnumerable<EstablishmentViewModel> List()
         {
             return Mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentViewModel>>
-                (_establishmentRepository.List());
+                (_establishmentService.List());
         }
 
         public IEnumerable<EstablishmentViewModel> ListByTag(string tag)
         {
             return Mapper.Map<IEnumerable<Establishment>, IEnumerable<EstablishmentViewModel>>
-                (_establishmentRepository.ListByTag(tag));
+                (_establishmentService.ListByTag(tag));
         }
 
         public bool Remove(long id)
         {
             try
             {
-                var establishment = _establishmentRepository.Get(id);
+                var establishment = _establishmentService.Get(id);
 
                 if (establishment != null)
                 {
                     establishment.Deleted = true;
-                    _establishmentRepository.Update(establishment);
+                    _establishmentService.Save(establishment);
 
                     Commit();
                 }
@@ -102,7 +96,7 @@ namespace WebAPI.Application
 
         public void Dispose()
         {
-            _establishmentRepository.Dispose();
+            _establishmentService.Dispose();
             _postalAddressApplication.Dispose();
             GC.SuppressFinalize(this);
         }
