@@ -78,9 +78,9 @@
       <Project>{b921738e-b63c-4653-afb1-cb50e284a639}</Project>
       <Name>WebAPI.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebAPI.Infra.Repo\WebAPI.Infra.Repo.csproj">
+    <ProjectReference Include="..\WebAPI.Infra.Data\WebAPI.Infra.Data.csproj">
       <Project>{dea771fc-7ff2-45e1-9756-de076bccf65f}</Project>
-      <Name>WebAPI.Infra.Repo</Name>
+      <Name>WebAPI.Infra.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-﻿using WebAPI.Infra.Repo.DataContext.UnitOfWork;
+﻿using WebAPI.Infra.Data.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
 {

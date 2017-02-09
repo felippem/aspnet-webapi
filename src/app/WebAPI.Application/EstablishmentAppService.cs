@@ -5,7 +5,7 @@ using WebAPI.Application.Interfaces;
 using WebAPI.Application.ViewModels;
 using WebAPI.Domain.Entities;
 using WebAPI.Domain.Interfaces.Services;
-using WebAPI.Infra.Repo.DataContext.UnitOfWork;
+using WebAPI.Infra.Data.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
 {

@@ -4,9 +4,9 @@ using WebAPI.Application.Interfaces;
 using WebAPI.Domain.Interfaces.Repository;
 using WebAPI.Domain.Interfaces.Services;
 using WebAPI.Domain.Services;
-using WebAPI.Infra.Repo.DataContext;
-using WebAPI.Infra.Repo.DataContext.UnitOfWork;
-using WebAPI.Infra.Repo.Repositories;
+using WebAPI.Infra.Data.DataContext;
+using WebAPI.Infra.Data.DataContext.UnitOfWork;
+using WebAPI.Infra.Data.Repositories;
 
 namespace WebAPI.Infra.IoC
 {
