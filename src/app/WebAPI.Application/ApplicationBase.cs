@@ -1,21 +1,15 @@
-﻿using WebAPI.Infra.Data.DataContext.UnitOfWork;
+﻿using WebAPI.Data.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
 {
     public class ApplicationBase
     {
-        #region Fields
-
         private readonly IUnitOfWork _unitOfWork;
-
-        #endregion
 
         public ApplicationBase(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-
-        #region Behaviors
 
         public void Begin()
         {
@@ -31,7 +25,5 @@ namespace WebAPI.Application
         {
             _unitOfWork.Rollback();
         }
-
-        #endregion
     }
 }

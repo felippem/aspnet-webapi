@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
 using WebAPI.Application.ViewModels;
-using WebAPI.Domain.Entities;
+using WebAPI.Core.Model;
+using WebAPI.Core.Model.Agregates;
 
 namespace WebAPI.Application.AutoMapper
 {
     public class ViewModelToDomainMappingProfile : Profile
     {
-        #region Properties
-
         public override string ProfileName
         {
             get
@@ -16,17 +15,17 @@ namespace WebAPI.Application.AutoMapper
             }
         }
 
-        #endregion
-
-        #region Behaviors
-
         protected override void Configure()
         {
-            Mapper.CreateMap<EstablishmentViewModel, Establishment>();
-            Mapper.CreateMap<PostalAddressViewModel, PostalAddress>();
-            Mapper.CreateMap<SubsidiaryViewModel, Subsidiary>();
+            Mapper.CreateMap<EstablishmentViewModel, Establishment>()
+                .ForMember(x => x.BrokenRules, opt => opt.Ignore())
+                .ForMember(x => x.Created, opt => opt.Ignore());
+            Mapper.CreateMap<PostalAddressViewModel, PostalAddress>()
+                .ForMember(x => x.BrokenRules, opt => opt.Ignore())
+                .ForMember(x => x.Created, opt => opt.Ignore());
+            Mapper.CreateMap<SubsidiaryViewModel, Subsidiary>()
+                .ForMember(x => x.BrokenRules, opt => opt.Ignore())
+                .ForMember(x => x.Created, opt => opt.Ignore());
         }
-
-        #endregion
     }
 }

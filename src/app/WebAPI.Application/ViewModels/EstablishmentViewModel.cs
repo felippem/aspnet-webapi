@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WebAPI.Application.ViewModels
 {
     public class EstablishmentViewModel
     {
-        #region Properties
-
         public bool AcceptsReservations { get; set; }
         public string AlternateName { get; set; }
         public string CurrenciesAccepted { get; set; }
         public string ContactName { get; set; }
         public DateTime Created { get; set; }
-        public long EstablishmentKey { get; set; }
+        public long Key { get; set; }
         public bool Deleted { get; set; }
         public bool Enabled { get; set; }
         public string Email { get; set; }
@@ -23,6 +22,6 @@ namespace WebAPI.Application.ViewModels
         public string Telephone { get; set; }
         public string Tags { get; set; }
 
-        #endregion
+        public HashSet<object> BrokenRules { get; set; }
     }
 }

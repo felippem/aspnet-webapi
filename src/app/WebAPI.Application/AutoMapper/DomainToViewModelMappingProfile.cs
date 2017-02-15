@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
 using WebAPI.Application.ViewModels;
-using WebAPI.Domain.Entities;
+using WebAPI.Core.Model;
+using WebAPI.Core.Model.Agregates;
 
 namespace WebAPI.Application.AutoMapper
 {
     public class DomainToViewModelMappingProfile : Profile
     {
-        #region Properties
-
         public override string ProfileName
         {
             get
@@ -15,18 +14,12 @@ namespace WebAPI.Application.AutoMapper
                 return "DomainToViewModelMappings";
             }
         }
-
-        #endregion
-
-        #region Behaviors
-
+        
         protected override void Configure()
         {
             Mapper.CreateMap<Establishment, EstablishmentViewModel>();
             Mapper.CreateMap<PostalAddress, PostalAddressViewModel>();
             Mapper.CreateMap<Subsidiary, SubsidiaryViewModel>();
         }
-
-        #endregion
     }
 }

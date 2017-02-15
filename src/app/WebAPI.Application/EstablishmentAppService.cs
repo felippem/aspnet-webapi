@@ -3,20 +3,16 @@ using System;
 using System.Collections.Generic;
 using WebAPI.Application.Interfaces;
 using WebAPI.Application.ViewModels;
-using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces.Services;
-using WebAPI.Infra.Data.DataContext.UnitOfWork;
+using WebAPI.Core.Interfaces.Services;
+using WebAPI.Core.Model.Agregates;
+using WebAPI.Data.DataContext.UnitOfWork;
 
 namespace WebAPI.Application
 {
     public class EstablishmentAppService : ApplicationBase, IEstablishmentAppService
     {
-        #region Fields
-
         private IEstablishmentService _establishmentService;
         private IPostalAddressAppService _postalAddressApplication;
-
-        #endregion
 
         public EstablishmentAppService(IEstablishmentService establishmentService,
             IPostalAddressAppService postalAddressApplication,
@@ -27,29 +23,30 @@ namespace WebAPI.Application
             _postalAddressApplication = postalAddressApplication;
         }
 
-        #region Behaviors
-
         public EstablishmentViewModel Save(EstablishmentViewModel establishmentViewModel)
         {
             Establishment establishment = null;
 
             try
             {
-                Begin();
-
                 establishment = Mapper.Map<EstablishmentViewModel, Establishment>(establishmentViewModel);
 
-                if (establishment.PostalAddress != null)
-                    establishment.PostalAddress = _postalAddressApplication.Save(establishment.PostalAddress);
-                
-                establishment = _establishmentService.Save(establishment);
+                if (establishment.IsValid)
+                {
+                    Begin();
 
-                Commit();
+                    if (establishment.PostalAddress != null)
+                        establishment.AddAddress(_postalAddressApplication.Save(establishment.PostalAddress));
+
+                    establishment = _establishmentService.Save(establishment);
+
+                    Commit();
+                }
             }
-            catch
+            catch(Exception ex)
             {
                 Rollback();
-                establishment = null;
+                throw ex;
             }
 
             return Mapper.Map<Establishment, EstablishmentViewModel>(establishment);
@@ -76,15 +73,9 @@ namespace WebAPI.Application
         {
             try
             {
-                var establishment = _establishmentService.Get(id);
+                _establishmentService.Remove(id);
 
-                if (establishment != null)
-                {
-                    establishment.Deleted = true;
-                    _establishmentService.Save(establishment);
-
-                    Commit();
-                }
+                Commit();
             }
             catch
             {
@@ -100,7 +91,5 @@ namespace WebAPI.Application
             _postalAddressApplication.Dispose();
             GC.SuppressFinalize(this);
         }
-
-        #endregion
     }
 }

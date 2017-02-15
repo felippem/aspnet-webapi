@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WebAPI.Application.ViewModels
 {
     public class PostalAddressViewModel
     {
-        #region Properties
-
-        public long PostalAddressKey { get; set; }
+        public long Key { get; set; }
         public string Country { get; set; }
         public string Complement { get; set; }
         public DateTime Created { get; set; }
@@ -17,6 +16,6 @@ namespace WebAPI.Application.ViewModels
         public string Region { get; set; }
         public string StreetAddress { get; set; }
 
-        #endregion
+        public HashSet<object> BrokenRules { get; set; }
     }
 }

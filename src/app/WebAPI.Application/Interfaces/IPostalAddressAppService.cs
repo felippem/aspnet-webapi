@@ -1,5 +1,5 @@
 ﻿using System;
-using WebAPI.Domain.Entities;
+using WebAPI.Core.Model;
 
 namespace WebAPI.Application.Interfaces
 {

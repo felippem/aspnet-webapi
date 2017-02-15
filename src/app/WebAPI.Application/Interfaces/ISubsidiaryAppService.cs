@@ -6,7 +6,6 @@ namespace WebAPI.Application.Interfaces
 {
     public interface ISubsidiaryAppService : IDisposable
     {
-        SubsidiaryViewModel AddEstablishment(long id, EstablishmentViewModel establishmentViewModel);
         SubsidiaryViewModel Get(long id);
         IEnumerable<SubsidiaryViewModel> List();
         IEnumerable<SubsidiaryViewModel> List(long establishmentId);

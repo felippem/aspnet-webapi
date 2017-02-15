@@ -4,8 +4,6 @@ namespace WebAPI.Application.AutoMapper
 {
     public class AutoMapperConfig
     {
-        #region Behaviors
-
         public static void RegisterMappings()
         {
             Mapper.Initialize(i =>
@@ -16,7 +14,5 @@ namespace WebAPI.Application.AutoMapper
                 i.AddProfile<DomainToViewModelMappingProfile>();
             });
         }
-
-        #endregion
     }
 }

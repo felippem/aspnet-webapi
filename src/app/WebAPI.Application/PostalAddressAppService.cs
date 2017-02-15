@@ -1,7 +1,7 @@
 ﻿using System;
 using WebAPI.Application.Interfaces;
-using WebAPI.Domain.Entities;
-using WebAPI.Domain.Interfaces.Services;
+using WebAPI.Core.Interfaces.Services;
+using WebAPI.Core.Model;
 
 namespace WebAPI.Application
 {
@@ -16,7 +16,8 @@ namespace WebAPI.Application
 
         public PostalAddress Save(PostalAddress postalAddress)
         {
-            postalAddress = _postalAddressService.Save(postalAddress);
+            if (postalAddress.IsValid)
+                postalAddress = _postalAddressService.Save(postalAddress);
 
             return postalAddress;
         }

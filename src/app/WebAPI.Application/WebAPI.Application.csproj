@@ -59,13 +59,17 @@
     <Compile Include="ViewModels\SubsidiaryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebAPI.Domain\WebAPI.Domain.csproj">
-      <Project>{b921738e-b63c-4653-afb1-cb50e284a639}</Project>
-      <Name>WebAPI.Domain</Name>
+    <ProjectReference Include="..\SharedKernel\SharedKernel.csproj">
+      <Project>{9a90dc68-4339-418f-b350-7a4f08e44a4d}</Project>
+      <Name>SharedKernel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebAPI.Infra.Data\WebAPI.Infra.Data.csproj">
+    <ProjectReference Include="..\WebAPI.Core\WebAPI.Core.csproj">
+      <Project>{b921738e-b63c-4653-afb1-cb50e284a639}</Project>
+      <Name>WebAPI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAPI.Data\WebAPI.Data.csproj">
       <Project>{dea771fc-7ff2-45e1-9756-de076bccf65f}</Project>
-      <Name>WebAPI.Infra.Data</Name>
+      <Name>WebAPI.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
