@@ -17,7 +17,7 @@ namespace WebAPI.Core.Services
 
         public Subsidiary Save(Subsidiary subsidiary)
         {
-            if (subsidiary.Id == 0)
+            if (subsidiary.Id <= 0)
                 subsidiary = _subsidiaryRepository.Create(subsidiary);
             else
                 subsidiary = _subsidiaryRepository.Update(subsidiary);

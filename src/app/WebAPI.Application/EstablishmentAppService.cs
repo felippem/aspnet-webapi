@@ -29,7 +29,7 @@ namespace WebAPI.Application
 
             try
             {
-                establishment = Mapper.Map<EstablishmentViewModel, Establishment>(establishmentViewModel);
+                establishment = Mapper.Map<EstablishmentViewModel, Establishment>(establishmentViewModel, _establishmentService.Get(establishmentViewModel.Key));
 
                 if (establishment.IsValid)
                 {

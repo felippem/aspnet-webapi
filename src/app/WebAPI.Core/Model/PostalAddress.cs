@@ -28,22 +28,22 @@ namespace WebAPI.Core.Model
             string postalCode, string region, string streetAddress)
         {
             if (string.IsNullOrWhiteSpace(country))
-                this.AddBrokenRule(PostalAddressRules.Country, "O país é obrigatório");
+                this.Add(PostalAddressRules.Country, "O país é obrigatório");
 
             if (string.IsNullOrWhiteSpace(locality))
-                this.AddBrokenRule(PostalAddressRules.Locality, "A localização é obrigatório");
+                this.Add(PostalAddressRules.Locality, "A localização é obrigatório");
 
             if (string.IsNullOrWhiteSpace(number))
-                this.AddBrokenRule(PostalAddressRules.Number, "O número é obrigatório");
+                this.Add(PostalAddressRules.Number, "O número é obrigatório");
 
             if (string.IsNullOrWhiteSpace(postalCode))
-                this.AddBrokenRule(PostalAddressRules.PostalCode, "O CEP é obrigatório");
+                this.Add(PostalAddressRules.PostalCode, "O CEP é obrigatório");
 
             if (string.IsNullOrWhiteSpace(region))
-                this.AddBrokenRule(PostalAddressRules.Region, "A região é obrigatório");
+                this.Add(PostalAddressRules.Region, "A região é obrigatório");
 
             if (string.IsNullOrWhiteSpace(streetAddress))
-                this.AddBrokenRule(PostalAddressRules.StreetAddress, "O nome da rua é obrigatório");
+                this.Add(PostalAddressRules.StreetAddress, "O nome da rua é obrigatório");
 
             this.Country = country;
             this.Locality = locality;

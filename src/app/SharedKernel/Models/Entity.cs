@@ -4,7 +4,7 @@ namespace SharedKernel.Models
 {
     public abstract class Entity<TId> : IEquatable<Entity<TId>>, IDisposable
     {
-        public TId Id { get; private set; }
+        public TId Id { get; protected set; }
 
         protected Entity()
         {

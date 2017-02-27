@@ -18,24 +18,21 @@ namespace WebAPI.Data.Repositories
         {
             if (!_manager.TestConnection()) return null;
 
-            return base._dbSet.Where(w => w.Id == id)
-                .Include(i => i.PostalAddress).FirstOrDefault();
+            return base._dbSet.Where(w => w.Id == id).Include(i => i.PostalAddress).FirstOrDefault();
         }
 
         public override IEnumerable<Establishment> List()
         {
             if (!_manager.TestConnection()) return null;
 
-            return base._dbSet.Where(w => !w.Deleted)
-                .Include(i => i.PostalAddress);
+            return base._dbSet.Where(w => !w.Deleted).Include(i => i.PostalAddress);
         }
 
         public IEnumerable<Establishment> ListByTag(string tag)
         {
             if (!_manager.TestConnection()) return null;
 
-            return base._dbSet.Where(o => o.Tags.Contains(tag))
-                .Include(i => i.PostalAddress);
+            return base._dbSet.Where(o => o.Tags.Contains(tag)).Include(i => i.PostalAddress);
         }
     }
 }

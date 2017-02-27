@@ -17,7 +17,7 @@ namespace WebAPI.Core.Services
 
         public Establishment Save(Establishment establishment)
         {
-            if (establishment.Id == 0)
+            if (establishment.Id <= 0)
                 establishment = _establishmentRepository.Create(establishment);
             else
                 establishment = _establishmentRepository.Update(establishment);

@@ -32,7 +32,7 @@ namespace WebAPI.Application
 
             try
             {   
-                subsidiary = Mapper.Map<SubsidiaryViewModel, Subsidiary>(subsidiaryViewModel);
+                subsidiary = Mapper.Map<SubsidiaryViewModel, Subsidiary>(subsidiaryViewModel, _subsidiaryService.Get(subsidiaryViewModel.Key));
 
                 if (subsidiary.IsValid)
                 {

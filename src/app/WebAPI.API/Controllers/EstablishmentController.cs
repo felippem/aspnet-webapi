@@ -7,7 +7,7 @@ using WebAPI.Application.ViewModels;
 
 namespace WebAPI.API.Controllers
 {
-    [ExceptitonFilter]
+    [ExceptionFilter]
     public class EstablishmentController : ApiController
     {
         private IEstablishmentAppService _establishmentApplication;

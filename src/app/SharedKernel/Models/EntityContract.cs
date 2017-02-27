@@ -17,7 +17,7 @@ namespace SharedKernel.Models
             this.BrokenRules = new HashSet<BrokenRules<T>>();
         }
 
-        public void AddBrokenRule(T brokenRule, string errorMessage)
+        public void Add(T brokenRule, string errorMessage)
         {
             this.BrokenRules.Add(new BrokenRules<T>(brokenRule, errorMessage));
         }

@@ -32,16 +32,16 @@ namespace WebAPI.Core.Model.Agregates
         public Establishment(string alternateName, string legalName, string email, string telephone)
         {
             if (string.IsNullOrWhiteSpace(alternateName))
-                this.AddBrokenRule(EstablihsmentRules.AlternateName, "O nome alternativo é obrigatório");
+                this.Add(EstablihsmentRules.AlternateName, "O nome alternativo é obrigatório");
 
             if (string.IsNullOrWhiteSpace(legalName))
-                this.AddBrokenRule(EstablihsmentRules.LegalName, "O nome legal é obrigatório");
+                this.Add(EstablihsmentRules.LegalName, "O nome legal é obrigatório");
 
             if (string.IsNullOrWhiteSpace(email))
-                this.AddBrokenRule(EstablihsmentRules.Email, "O e-mail é obrigatório");
+                this.Add(EstablihsmentRules.Email, "O e-mail é obrigatório");
 
             if (string.IsNullOrWhiteSpace(telephone))
-                this.AddBrokenRule(EstablihsmentRules.Telephone, "O telefone é obrigatório");
+                this.Add(EstablihsmentRules.Telephone, "O telefone é obrigatório");
 
             this.AlternateName = alternateName;
             this.Email = email;

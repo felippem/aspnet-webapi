@@ -6,13 +6,17 @@ using WebAPI.Data.DataContext.EntityConfig;
 
 namespace WebAPI.Data.DataContext
 {
-    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class Context : DbContext
     {
         public Context() : base("ConnectionString")
         {
             base.Configuration.ValidateOnSaveEnabled = false;
             base.Configuration.LazyLoadingEnabled = true;
+        }
+
+        static Context()
+        {
+            DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

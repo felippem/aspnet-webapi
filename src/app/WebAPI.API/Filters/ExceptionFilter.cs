@@ -5,7 +5,7 @@ using WebAPI.API.Models;
 
 namespace WebAPI.API.Filters
 {
-    public class ExceptitonFilter : ExceptionFilterAttribute
+    public class ExceptionFilter : ExceptionFilterAttribute
     {
         public override void OnException(HttpActionExecutedContext actionExecutedContext)
         {

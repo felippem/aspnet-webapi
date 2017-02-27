@@ -28,16 +28,16 @@ namespace WebAPI.Core.Model.Agregates
         public Subsidiary(string contactName, string email, string telephone, long establishmentId)
         {
             if (string.IsNullOrWhiteSpace(contactName))
-                this.AddBrokenRule(SubsidiaryRules.ContactName, "O nome do contato é obrigatório");
+                this.Add(SubsidiaryRules.ContactName, "O nome do contato é obrigatório");
 
             if (string.IsNullOrWhiteSpace(email))
-                this.AddBrokenRule(SubsidiaryRules.Email, "O e-mail é obrigatório");
+                this.Add(SubsidiaryRules.Email, "O e-mail é obrigatório");
 
             if (string.IsNullOrWhiteSpace(telephone))
-                this.AddBrokenRule(SubsidiaryRules.Telephone, "O telefone é obrigatório");
+                this.Add(SubsidiaryRules.Telephone, "O telefone é obrigatório");
 
             if (establishmentId <= 0)
-                this.AddBrokenRule(SubsidiaryRules.Establishment, "O id do estabelecimento é obrigatório");
+                this.Add(SubsidiaryRules.Establishment, "O id do estabelecimento é obrigatório");
 
             this.ContactName = contactName;
             this.Email = email;
