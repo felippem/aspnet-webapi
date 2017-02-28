@@ -30,11 +30,23 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Localhost|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Localhost\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\Enums\ConfigSection.cs" />
+    <Compile Include="Interfaces\Services\ISmsService.cs" />
     <Compile Include="Model\Agregates\Establishment.cs" />
+    <Compile Include="Model\DomainEvents\EstablishmentRemovedEvent.cs" />
     <Compile Include="Model\Enums\Rules\EstablihsmentRules.cs" />
     <Compile Include="Model\Enums\Rules\PostalAddressRules.cs" />
     <Compile Include="Model\Enums\Rules\SubsidiaryRules.cs" />
@@ -49,6 +61,7 @@
     <Compile Include="Interfaces\Services\ISubsidiaryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EstablishmentService.cs" />
+    <Compile Include="Services\EventHandlers\SendNotificationEstablishmentRemoved.cs" />
     <Compile Include="Services\PostalAddressService.cs" />
     <Compile Include="Services\SubsidiaryService.cs" />
   </ItemGroup>
@@ -58,6 +71,7 @@
       <Name>SharedKernel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

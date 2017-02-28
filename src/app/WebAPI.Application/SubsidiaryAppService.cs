@@ -74,16 +74,9 @@ namespace WebAPI.Application
 
         public bool Remove(long id)
         {
-            try
-            {
-                _subsidiaryService.Remove(id);
-                
-                Commit();
-            }
-            catch
-            {
-                return false;
-            }
+            _subsidiaryService.Remove(id);
+
+            Commit();
 
             return true;
         }

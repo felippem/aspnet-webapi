@@ -1,6 +1,7 @@
 ﻿using SharedKernel.Models;
 using System;
 using System.Collections.Generic;
+using WebAPI.Core.Model.DomainEvents;
 using WebAPI.Core.Model.Enums.Rules;
 
 namespace WebAPI.Core.Model.Agregates
@@ -48,7 +49,7 @@ namespace WebAPI.Core.Model.Agregates
             this.LegalName = legalName;
             this.Telephone = telephone;
 
-            if (this.Id <= 0)
+            if (this.Id == 0) 
                 this.Created = DateTime.Now;
         }
 
@@ -68,6 +69,8 @@ namespace WebAPI.Core.Model.Agregates
         {
             this.Deleted = true;
             this.Enabled = !this.Deleted;
+
+            SharedKernel.DomainEventsDispatcher.DomainEvents.Raise(new EstablishmentRemovedEvent(this));
         }
     }
 }

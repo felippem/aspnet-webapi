@@ -52,7 +52,7 @@ namespace WebAPI.Core.Model
             this.Region = region;
             this.StreetAddress = streetAddress;
 
-            if (this.Id <= 0)
+            if (this.Id == 0)
                 this.Created = DateTime.Now;
         }
     }

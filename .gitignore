@@ -3,6 +3,7 @@ obj
 obj/Debug
 obj/Release
 packages
+doc/appSettings.txt
 TestResults
 *.suo
 *.csproj.user

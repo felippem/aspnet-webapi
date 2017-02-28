@@ -71,16 +71,9 @@ namespace WebAPI.Application
 
         public bool Remove(long id)
         {
-            try
-            {
-                _establishmentService.Remove(id);
+            _establishmentService.Remove(id);
 
-                Commit();
-            }
-            catch
-            {
-                return false;
-            }
+            Commit();
 
             return true;
         }

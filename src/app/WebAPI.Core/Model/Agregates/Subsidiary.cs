@@ -43,7 +43,7 @@ namespace WebAPI.Core.Model.Agregates
             this.Email = email;
             this.Telephone = telephone;
 
-            if (this.Id <= 0)
+            if (this.Id == 0)
                 this.Created = DateTime.Now;
         }
 

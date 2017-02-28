@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Establishment", "Establishm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "app\SharedKernel\SharedKernel.csproj", "{9A90DC68-4339-418F-B350-7A4F08E44A4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Services", "app\WebApi.Services\WebApi.Services.csproj", "{AC8643B0-A351-4D71-9ADC-8216D9AFB002}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{9A90DC68-4339-418F-B350-7A4F08E44A4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A90DC68-4339-418F-B350-7A4F08E44A4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A90DC68-4339-418F-B350-7A4F08E44A4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC8643B0-A351-4D71-9ADC-8216D9AFB002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC8643B0-A351-4D71-9ADC-8216D9AFB002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC8643B0-A351-4D71-9ADC-8216D9AFB002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC8643B0-A351-4D71-9ADC-8216D9AFB002}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,5 +74,6 @@ Global
 		{4AB1DAE0-494E-4045-8F11-4E6006E1655A} = {3D7AE5EB-3156-401E-AA74-1FAE5B577709}
 		{DEA771FC-7FF2-45E1-9756-DE076BCCF65F} = {3D7AE5EB-3156-401E-AA74-1FAE5B577709}
 		{FF47D43D-5524-4189-8D81-BA8532C22F1F} = {89658C47-251E-4F41-8B00-56E00BBA1F69}
+		{AC8643B0-A351-4D71-9ADC-8216D9AFB002} = {3D7AE5EB-3156-401E-AA74-1FAE5B577709}
 	EndGlobalSection
 EndGlobal
