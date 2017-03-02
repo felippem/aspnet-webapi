@@ -44,7 +44,10 @@ namespace WebAPI.Core.Model.Agregates
             this.Telephone = telephone;
 
             if (this.Id == 0)
+            {
                 this.Created = DateTime.Now;
+                this.Enabled = true;
+            }
         }
 
         public bool Available()
@@ -54,14 +57,14 @@ namespace WebAPI.Core.Model.Agregates
 
         public void AddEstablishment(Establishment establishment)
         {
-            if (establishment == null) return;
+            if (establishment == null || !establishment.IsValid) return;
 
             this.Establishment = establishment;
         }
 
         public void AddAddress(PostalAddress address)
         {
-            if (address == null) return;
+            if (address == null || !address.IsValid) return;
             
             this.PostalAddress = address;
         }
@@ -70,6 +73,17 @@ namespace WebAPI.Core.Model.Agregates
         {
             this.Deleted = true;
             this.Enabled = !this.Deleted;
+        }
+
+        public void Restore()
+        {
+            this.Deleted = false;
+            this.Enabled = true;
+        }
+
+        public void Status(bool enabled)
+        {
+            this.Enabled = enabled;
         }
     }
 }
