@@ -8,7 +8,7 @@ namespace WebAPI.Data.DataContext
 {
     public class Context : DbContext
     {
-        public Context() : base("ConnectionString")
+        public Context() : base(System.Environment.GetEnvironmentVariable("ConnectionString") ?? "ConnectionString")
         {
             base.Configuration.ValidateOnSaveEnabled = false;
             base.Configuration.LazyLoadingEnabled = true;

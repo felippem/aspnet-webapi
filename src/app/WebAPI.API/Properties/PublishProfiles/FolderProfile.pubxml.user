@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\deploy</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AutoMapper.dll">
+      <publishTime>01/12/2017 14:14:55</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>06/02/2016 13:56:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Logging.dll">
+      <publishTime>02/28/2017 00:07:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.IdentityModel.Tokens.dll">
+      <publishTime>02/28/2017 00:07:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>06/10/2016 12:13:22</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>06/02/2016 13:57:24</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.Entity.EF6.dll">
+      <publishTime>06/02/2016 13:58:05</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>02/28/2017 00:05:43</publishTime>
+    </File>
+    <File Include="bin/SharedKernel.dll">
+      <publishTime>03/03/2018 18:28:00</publishTime>
+    </File>
+    <File Include="bin/SharedKernel.pdb">
+      <publishTime>03/03/2018 18:28:00</publishTime>
+    </File>
+    <File Include="bin/SimpleInjector.dll">
+      <publishTime>01/12/2017 12:05:32</publishTime>
+    </File>
+    <File Include="bin/SimpleInjector.Extensions.ExecutionContextScoping.dll">
+      <publishTime>01/18/2017 00:03:26</publishTime>
+    </File>
+    <File Include="bin/SimpleInjector.Integration.WebApi.dll">
+      <publishTime>01/18/2017 00:03:26</publishTime>
+    </File>
+    <File Include="bin/System.IdentityModel.Tokens.Jwt.dll">
+      <publishTime>02/28/2017 00:07:38</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>06/02/2016 13:32:19</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>06/10/2016 12:18:23</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>06/02/2016 13:32:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>06/10/2016 12:18:42</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>06/10/2016 12:18:25</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>06/10/2016 12:18:22</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>06/10/2016 12:18:23</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>06/10/2016 12:18:23</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>06/10/2016 12:18:23</publishTime>
+    </File>
+    <File Include="bin/Twilio.dll">
+      <publishTime>02/28/2017 00:07:38</publishTime>
+    </File>
+    <File Include="bin/WebActivator.dll">
+      <publishTime>01/12/2017 13:10:13</publishTime>
+    </File>
+    <File Include="bin/WebAPI.API.dll">
+      <publishTime>03/03/2018 18:28:02</publishTime>
+    </File>
+    <File Include="bin/WebAPI.API.pdb">
+      <publishTime>03/03/2018 18:28:02</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Application.dll">
+      <publishTime>03/03/2018 18:28:01</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Application.pdb">
+      <publishTime>03/03/2018 18:28:01</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Core.dll">
+      <publishTime>03/03/2018 18:28:00</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Core.pdb">
+      <publishTime>03/03/2018 18:28:00</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Data.dll">
+      <publishTime>03/03/2018 18:28:00</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Data.dll.config">
+      <publishTime>03/03/2018 17:55:21</publishTime>
+    </File>
+    <File Include="bin/WebAPI.Data.pdb">
+      <publishTime>03/03/2018 18:28:00</publishTime>
+    </File>
+    <File Include="bin/WebAPI.IoC.dll">
+      <publishTime>03/03/2018 18:28:01</publishTime>
+    </File>
+    <File Include="bin/WebAPI.IoC.dll.config">
+      <publishTime>02/28/2017 00:35:11</publishTime>
+    </File>
+    <File Include="bin/WebAPI.IoC.pdb">
+      <publishTime>03/03/2018 18:28:01</publishTime>
+    </File>
+    <File Include="bin/WebApi.Services.dll">
+      <publishTime>03/03/2018 18:28:01</publishTime>
+    </File>
+    <File Include="bin/WebApi.Services.pdb">
+      <publishTime>03/03/2018 18:28:01</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>02/11/2017 18:18:10</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/19/2017 21:25:31</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>06/10/2016 12:13:21</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/03/2018 18:39:08</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
